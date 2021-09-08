@@ -13,8 +13,11 @@ class User < ApplicationRecord
 
   validates :username,
             :presence => true,
-            :length => { :maximum => 50 },
+            :length => { :maximum => 25, :minimum => 3 },
             :uniqueness => { :case_sensitive => false }
+
+  validates :screen_name,
+            :length => { :maximum => 25, :minimum => 3 }
 
   BANNED_USERNAMES = ["admin", "administrator", "contact", "fraud", "guest",
      "help", "hostmaster", "committi", "mailer-daemon", "moderator",
