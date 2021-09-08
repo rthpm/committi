@@ -29,4 +29,9 @@ class User < ApplicationRecord
 
   # Relationships
   has_many :challenges, :dependent => :destroy
+
+  # Helpers
+  def self.greet_who(user)
+    user.screen_name || user.username
+  end
 end
