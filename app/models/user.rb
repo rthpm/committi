@@ -28,5 +28,5 @@ class User < ApplicationRecord
   end
 
   # Relationships
-  has_many :challenges
+  has_many :challenges, :dependent => :destroy
 end
