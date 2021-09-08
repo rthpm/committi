@@ -4,12 +4,25 @@
     <title>Committi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   </head>
 
   <body>
-    <%= yield %>
+      <header class="text-center text-white masthead" id="bg-layout-committi">
+        <div class="container">
+          <%= image_tag 'committi-orange.svg', :id => 'logo-committi' %>
+          <p class="header-p">Vous avez toujours voulu vous dépasser avec des défis? Venez créer les vôtres en rejoignant&nbsp; la communauté de Committi</p>
+          <%= button_to "S'inscrire", new_user_registration_path, :class => "btn btn-primary", :id => "btn-signup", :type => "button" %>
+        </div> 
+      </header>
+
+    <div class="container">
+        <%= yield %>
+    </div>
+      
+
   </body>
 </html>
