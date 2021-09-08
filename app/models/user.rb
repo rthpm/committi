@@ -24,7 +24,7 @@ class User < ApplicationRecord
             :uniqueness => { :case_sensitive => false }
 
   validates :screen_name,
-            :length => { :maximum => 25, :minimum => 3 }
+            :length => { :maximum => 25 }
 
   # For security & trust reasons
   BANNED_USERNAMES = ["admin", "administrator", "contact", "fraud", "guest",
