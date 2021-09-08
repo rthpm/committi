@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # Validation rules
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :email,
@@ -25,4 +26,7 @@ class User < ApplicationRecord
       record.errors.add(attr, "is not permitted")
     end
   end
+
+  # Relationships
+  has_many :challenges, :dependent => :destroy
 end
