@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   resources :homes
   resources :challenges
 
+  root 'homes#index'
   devise_for :users, skip: [:sessions, :registrations]
   as :user do
+  
     # Sensible reroute
     get    'login'  => 'devise/sessions#new',         :as => :new_user_session
     post   'login'  => 'devise/sessions#create',      :as => :user_session
