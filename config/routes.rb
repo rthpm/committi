@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     # Authenticated users gets a pass to a dedicated /profile
     authenticated :user do
-      get 'profile' => 'users/profiles#index', :as => :user_profile
+      get 'profile' => 'users#show', :as => :user_profile
     end
   end
 end
