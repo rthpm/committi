@@ -1,12 +1,11 @@
-#bg-layout-committi {
-    background: url("bg-layout-committi.jpg"); 
+#bg-index-committi {
+    background: url("bg-index-committi.jpg"); 
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
     max-width: 100%;
     display: flex;
     align-items: center;
-    z-index: 5;
 }
 
 .container {
@@ -48,4 +47,4 @@
     color:#ff8811;
     border: solid 3px #dd750a;
     box-shadow: 15px 16px 20px 3px #e0852a5b;
-}
+}   
