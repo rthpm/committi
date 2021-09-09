@@ -1,6 +1,11 @@
-<nav class="navbar justify-content-center align-item-center align-content-center">
-    <%= image_tag 'committi-orange.svg', :id => 'logo-committi-navbar' %>
-    <a class="navbar-brand" href="/">A propos</a>
-    <a class="navbar-brand" href="/">Contact</a>
-    <a class="btn btn-outline-primary" href="/login" role="button">Login</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= image_tag 'committi-orange.svg', :class => 'navbar-brand d-lg-none'%>
+  <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
+    <div class="navbar-nav">
+			<%= link_to 'A propos', :url => '#', :class => 'nav-link-left' %>
+			<%= link_to 'Contact', :url => '#', :class => 'nav-link_left' %>
+	</div>
+	<%= image_tag 'committi-orange.svg', :class => 'navbar-brand d-none d-lg-block'%>
+	<%= button_to "Login", new_user_session_path, :class => "btn", :id => "btn-navbar-login", :type => "button"%>
+  </div>
 </nav>
