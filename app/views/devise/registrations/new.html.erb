@@ -5,7 +5,8 @@
         <div class="image-holder">
           <div class="container">
             <h2 class="text-center"><strong>Créer un compte</strong></h2>
-            <%= form_with url:  user_registration_path, model: @user, method: :post do |form| %>
+              <%= form_with model: @user, url: user_registration_path, local: true do |form| %>
+              <%=  render 'devise/shared/error_messages', model: form.object %>
               <%= form.text_field :username, :placeholder => 'Votre pseudo', :class => 'form-control mb-3' %>
               <%= form.text_field :email, :placeholder => 'Email', :class => 'form-control mb-3' %>
               <%= form.password_field :password, :placeholder => 'Mot de passe', :class => 'form-control mb-3'%>
