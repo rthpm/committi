@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   # Validation rules
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable,
+         :recoverable, :rememberable, :confirmable,
          :validatable, authentication_keys: [:login]
   attr_writer :login
 
