@@ -1,24 +1,42 @@
-# README
+Project :
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+it is a social network of challenge where the objective is to make them succeed.
 
-Things you may want to cover:
+Gems used in development test: 
 
-* Ruby version
+gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+gem 'dotenv-rails'
 
-* System dependencies
 
-* Configuration
+Gems used in development:
 
-* Database creation
+gem 'web-console', '>= 3.3.0'
+gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'spring'
+gem 'spring-watcher-listen', '~> 2.0.0'
+gem 'better_errors'
+gem 'binding_of_caller' # Better errors dependency
+gem 'table_print'
+gem 'rubocop', '0.81', require: false
+gem 'rubocop-rails', require: false
+gem 'letter_opener'
+gem 'faker'
 
-* Database initialization
+The other gems:
 
-* How to run the test suite
+gem 'rails', '~> 5.2.6'
+gem 'pg', '>= 0.18', '< 2.0'
+gem 'puma', '~> 3.11'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.2'
+gem 'turbolinks', '~> 5'
+gem 'jbuilder', '~> 2.5'
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'devise'
+gem 'devise-i18n'
+gem 'strong_password', '~> 0.0.9'
+gem 'aws-sdk-s3', '~> 1' # We use Backblaze’s S3 API
+gem 'stripe'
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+herokuapp link : http://committi.herokuapp.com 

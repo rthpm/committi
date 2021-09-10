@@ -7,5 +7,6 @@
 	</div>
 	<%= image_tag 'committi-orange.svg', :class => 'navbar-brand d-none d-lg-block'%>
 	<%= button_to "Login", new_user_session_path, :class => "btn", :id => "btn-navbar-login", :type => "button"%>
+	<%= link_to "Log out", destroy_user_session_path, :class => "btn btn-danger", :type => "button", :method => 'delete' %>
   </div>
 </nav>
