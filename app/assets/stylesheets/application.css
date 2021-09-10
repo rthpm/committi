@@ -14,3 +14,15 @@
  *= require_self
  *= 
  */
+ 
+#btn-formulary {
+    color: white;
+    background-color: #dd750a;
+    border :solid 3px white;
+}
+
+#btn-formulary:hover {
+    background-color: #dd740a46;
+    color:#ff8811;
+    border: solid .3px #dd750a;
+}
