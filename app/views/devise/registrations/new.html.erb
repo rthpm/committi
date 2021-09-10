@@ -4,7 +4,7 @@
     <div class="form-container" id="form-container-registration">
         <div class="image-holder"></div>
           <div class="container p-5">
-            <h2 style="color: ##dd750a"><strong>Créer un compte</strong></h2>
+            <h2 style="color: #dd750a"><strong>Créer un compte</strong></h2>
              <%= form_with model: @user, url: user_registration_path, local: true do |form| %>
               <%=  render 'devise/shared/error_messages', model: form.object %>
               <%= form.text_field :username, :placeholder => 'Votre pseudo', :class => 'form-control mb-3' %>
