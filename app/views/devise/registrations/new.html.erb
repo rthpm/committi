@@ -5,8 +5,9 @@
         <div class="image-holder"></div>
           <div class="container p-5">
             <h2 style="color: ##dd750a"><strong>Créer un compte</strong></h2>
-            <%= form_with url: new_user_registration_path, method: :post do |form| %>
-              <%= form.text_field :email, :placeholder => 'Email', :class => 'form-control mb-3' %>
+            <%= form_with model: @user, url: user_registration_path, local: true do |form| %>
+              <%=  render 'devise/shared/error_messages', model: form.object %>
+              <%= form.text_field :username, :placeholder => 'Votre pseudo', :class => 'form-control mb-3' %>
               <%= form.password_field :password, :placeholder => 'Mot de passe', :class => 'form-control mb-3'%>
               <%= form.password_field :password, :placeholder => 'Confirmation Mot de passe', :class => 'form-control mb-3' %>
               <%= button_to "S'inscrire", root_path, :class => "btn btn-primary", :id => "btn-registration", :type => "button"%>
@@ -14,4 +15,5 @@
           </div>
     </div>
 </section>
+
 
