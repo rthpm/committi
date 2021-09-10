@@ -3,15 +3,18 @@
 <section class="register-photo">
     <div class="form-container" id="form-container-registration">
         <div class="image-holder"></div>
-        <form method="post">
-            <h2 class="text-center"><strong>Créer un compte</strong></h2>
-            <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email" style="border-color: rgb(80, 94, 108);background: rgba(221,117,10,0.13);" /></div>
-            <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Mot de passe" style="background: rgba(221,117,10,0.13);" /></div>
-            <div class="mb-3"><input class="form-control" type="password" name="password-repeat" placeholder="Confirmation mot de passe" style="background: rgba(221,117,10,0.13);" /></div>
-            <div class="mb-3">
-                <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" />I agree to the license terms.</label></div>
-            </div>
-            <div class="mb-3"><button class="btn btn-primary justify-content-center align-items-center" type="button" style="/*color: var(--bs-light);*/font-weight: bold;font-family: Almarai, sans-serif;/*border-radius: 14px;*//*box-shadow: none;*//*margin-top: 20px;*/background: #dd750a;/*width: auto;*//*height: 50px;*/border-color: var(--bs-light);/*background: #f4476b;*//*border: none;*/border-radius: 4px;padding: 11px;box-shadow: none;margin-top: 35px;text-shadow: none;outline: none !important;">Rejoindre</button></div><a class="already" href="#">You already have an account? Login here.</a>
-        </form>
+          <div class="container p-5">
+            <h2 style="color: ##dd750a"><strong>Créer un compte</strong></h2>
+             <%= form_with model: @user, url: user_registration_path, local: true do |form| %>
+              <%=  render 'devise/shared/error_messages', model: form.object %>
+              <%= form.text_field :username, :placeholder => 'Votre pseudo', :class => 'form-control mb-3' %>
+              <%= form.text_field :email, :placeholder => 'Email', :class => 'form-control mb-3' %>
+              <%= form.password_field :password, :placeholder => 'Mot de passe', :class => 'form-control mb-3'%>
+              <%= form.password_field :password, :placeholder => 'Confirmation Mot de passe', :class => 'form-control mb-3' %>
+              <%= button_to "S'inscrire", root_path, :class => "btn btn-primary", :id => "btn-registration", :type => "button"%>
+            <% end %>
+          </div>
     </div>
 </section>
+
+
