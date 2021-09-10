@@ -1,5 +1,3 @@
-<h2>Entrer dans Committi</h2>
-
 <section class="register-photo">
     <div class="form-container" id="form-container-registration">
         <div class="image-holder"></div>
@@ -9,7 +7,7 @@
               <%=  render 'devise/shared/error_messages', model: form.object %>
               <%= form.text_field :login, :placeholder => 'Nom de compte ou Email', :class => 'form-control mb-3' %>
               <%= form.password_field :password, :placeholder => 'Mot de passe', :class => 'form-control mb-3'%>
-              <%= button_to "Se connecter", root_path, :class => "btn btn-primary", :id => 'btn-formulary', :type => "button"%>
+              <%= button_to "Login", root_path, :class => "btn btn-primary", :id => 'btn-formulary', :type => "button"%>
               <%= form.check_box 'Se souvenir de moi' %>
             <% end %>
             
