@@ -1,26 +1,17 @@
-<h2>Log in</h2>
-
-<%= form_with model: @user, url: user_session_path, local: true do |form| %>
-  <div class="field">
-    <%= form.label :username_or_email %><br />
-    <%= form.text_field :login, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %><br />
-    <%= form.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= form.check_box :remember_me %>
-      <%= form.label :remember_me %>
+<section class="register-photo">
+    <div class="form-container" id="form-container-registration">
+        <div class="image-holder"></div>
+          <div class="container p-5">
+            <h2 style="color: #dd750a"><strong>Se connecter</strong></h2>
+             <%= form_with model: @user, url: user_registration_path, local: true do |form| %>
+              <%=  render 'devise/shared/error_messages', model: form.object %>
+              <%= form.text_field :login, :placeholder => 'Nom de compte ou Email', :class => 'form-control mb-3' %>
+              <%= form.password_field :password, :placeholder => 'Mot de passe', :class => 'form-control mb-3'%>
+              <%= button_to "Login", root_path, :class => "btn btn-primary", :id => 'btn-formulary', :type => "button"%>
+              <%= form.check_box 'Se souvenir de moi' %>
+            <% end %>
+            
+            <%= render "devise/shared/links" %>
+          </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

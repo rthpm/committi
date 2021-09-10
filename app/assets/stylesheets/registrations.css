@@ -44,13 +44,3 @@
 h2 {
     color: #dd750a;
 }
-
-#btn-registration {
-    background-color: #dd750a;
-}
-
-#btn-registration:hover {
-    background-color: #dd740a46;
-    color:#ff8811;
-    border: solid 3px #dd750a;
-}
