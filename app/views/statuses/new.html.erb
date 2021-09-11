@@ -1,0 +1,6 @@
+<h1>new post</h1>
+
+<%= form_with model: @status, url: challenge_statuses_path, local: true do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit %>
+<% end %>

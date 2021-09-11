@@ -1,9 +1,16 @@
 <h1>
-  <%= @challenge.title %><br >
+  <%= @challenge.title %><br />
   <small><%= @challenge.subtitle %></small>
 </h1>
 <p>Challenge lancé par <%= link_to @user.username, @user_path %>
 <p><%= @challenge.description %></p>
+
+<% if user_signed_in? %>
+  <%= form_with(model: [@challenge, @status], local: true) do |form| %>
+    <%= form.text_area :content %>
+    <%= form.submit %>
+  <% end %>
+<% end %>
 
 <% @statuses.order('created_at').reverse.each do |status| %>
   <h2><%= status.user.username %></h2>
