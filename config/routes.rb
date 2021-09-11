@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :homes
-  resources :challenges, :param => :slug
+  resources :challenges, :path => 'c', :param => :slug
 
   root 'homes#index'
 
