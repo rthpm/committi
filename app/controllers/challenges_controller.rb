@@ -1,5 +1,7 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_member!, only: [:new, :edit]
+
   def index
     @challenges = Challenge.all
   end

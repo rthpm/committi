@@ -1,5 +1,11 @@
 <h2>Les Challenges</h2>
 
+<% if user_signed_in? %>
+  <%= link_to "Créer un nouveau challenge", new_challenge_path %>
+<% else %>
+  <p><%= link_to "Rejoignez-nous", new_user_registration_path %> pour proposer vos challenges&nbsp;!</p>
+<% end %>
+
 <% @challenges.order('created_at').reverse.each do |challenge| %>
   <p>
     <%= link_to challenge_path(challenge.slug) do %>
