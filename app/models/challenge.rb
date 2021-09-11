@@ -1,6 +1,7 @@
 class Challenge < ApplicationRecord
   # Relationships
   belongs_to :user
+  has_many :statuses, :dependent => :destroy
 
   # Validation rules
   validates :slug, :title,

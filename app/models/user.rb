@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Relationships
   has_many :challenges, :dependent => :destroy
+  has_many :statuses, :dependent => :destroy
 
   # Validation rules
   devise :database_authenticatable, :registerable,

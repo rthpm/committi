@@ -4,3 +4,10 @@
 </h1>
 <p>Challenge lancé par <%= link_to @user.username, @user_path %>
 <p><%= @challenge.description %></p>
+
+<% @statuses.order('created_at').reverse.each do |status| %>
+  <h2><%= status.user.username %></h2>
+  <p><%= status.content %></p>
+  <p><%= Like.total_like(status) %></p>
+<% end %>
+

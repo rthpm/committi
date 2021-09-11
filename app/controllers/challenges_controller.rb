@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
+  before_action :set_statuses, only: [:show]
   before_action :authenticate_member!, only: [:new, :edit]
 
   def index
@@ -18,5 +19,9 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find_by(slug: params[:slug])
     @user = @challenge.user
     @user_path = profile_path(@user.username)
+  end
+
+  def set_statuses
+    @statuses = Status.where(challenge: @challenge)
   end
 end
