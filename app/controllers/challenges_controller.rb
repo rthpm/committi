@@ -14,5 +14,7 @@ class ChallengesController < ApplicationController
 
   def set_challenge
     @challenge = Challenge.find_by(slug: params[:slug])
+    @user = @challenge.user
+    @user_path = profile_path(@user.username)
   end
 end

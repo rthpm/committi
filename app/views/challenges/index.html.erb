@@ -4,6 +4,7 @@
   <p>
     <%= link_to challenge_path(challenge.slug) do %>
       <%= challenge.title %> - <%= challenge.subtitle %>
-    <% end %>
+    <% end %>,
+    Lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
   </p>
 <% end %>

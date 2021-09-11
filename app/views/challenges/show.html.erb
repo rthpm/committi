@@ -2,3 +2,5 @@
   <%= @challenge.title %><br >
   <small><%= @challenge.subtitle %></small>
 </h1>
+<p>Challenge lancé par <%= link_to @user.username, @user_path %>
+<p><%= @challenge.description %></p>
