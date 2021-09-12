@@ -60,4 +60,10 @@ class User < ApplicationRecord
       ["lower(username) = :value OR lower(email) = :value",
       { value: login.strip.downcase },]).first
   end
+
+  def avatar_url(user, opts = {})
+    size = opts[:size || 32]
+    hash = Digest::MD5.hexdigest(user.email.downcase)
+    "https://secure.gravatar.com/avatar/#{hash}.png?s=#{size}&d=identicon&r=PG"
+  end
 end
