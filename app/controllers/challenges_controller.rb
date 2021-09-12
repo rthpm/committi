@@ -12,6 +12,24 @@ class ChallengesController < ApplicationController
     @status = Status.new
   end
 
+  def new
+    @challenge = Challenge.new
+  end
+
+  def create
+    @challenge = Challenge.create(user: current_user,
+                                  title: params[:title],
+                                  subtitle: params[:subtitle],
+                                  description: params[:description])
+    if @challenge.save
+      flash[:notice] = 'Nouveau challenge créé'
+      redirect_to challenge_path(@challenge.slug)
+    else
+      flash[:alert] = 'Impossible de créer ce challenge'
+      render :new
+    end
+  end
+
   def edit; end
 
   def update; end
