@@ -1,9 +1,7 @@
-class Status < ApplicationRecord
+class Comment < ApplicationRecord
   # Relationships
   belongs_to :user
-  belongs_to :challenge
-  has_many :likes, :dependent => :destroy
-  has_many :comments, :dependent => :destroy
+  belongs_to :status
 
   # Validation rules
   validates :content,

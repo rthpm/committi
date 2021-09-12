@@ -11,7 +11,9 @@ class StatusesController < ApplicationController
     @status.challenge = @challenge
     @status.user = current_user
     if @status.save!
-      redirect_to challenge_path(@status.challenge.slug), notice: 'Item was successfully created.'
+      redirect_to challenge_path(@challenge.slug), notice: 'Votre status a été envoyé.'
+    else
+      redirect_back fallback_location: root_path, alert: 'Votre status n’a pas pu être envoyé.'
     end
   end
 
