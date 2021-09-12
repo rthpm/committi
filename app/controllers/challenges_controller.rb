@@ -8,6 +8,7 @@ class ChallengesController < ApplicationController
 
   def show
     @statuses = @challenge.statuses
+    @status = Status.new
   end
 
   def edit; end
