@@ -1,16 +1,18 @@
-<h2>Vous avec oublié votre mot de passe?</h2>
-
-<%= form_with model: resource, scope: resource_name, url: password_path(resource_name), local: true do |form| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= form.label :email %><br />
-    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<section class="register-photo">
+    <div class="form-container" id="form-container-registration">
+        <div class="image-holder"></div>
+          <div class="container p-5">
+            <h2 style="color: #dd750a"><strong>Oubli mot de passe </strong></h2>
+              <%= form_with model: resource, scope: resource_name, url: password_path(resource_name), local: true do |form| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="field">
+                <%= form.label :email %><br />
+                <%= form.email_field :email, :autofocus => 'true', :autocomplete => 'email', :class => 'form-control mb-3'  %>
+              </div>
+              <div class="actions">
+                <%= form.submit "Réinitialiser mot de passe", :class => "btn btn-primary", :id => "btn-formulary" %>
+              </div>
+              <% end %>
+          </div>
+    </div>
+</section>
