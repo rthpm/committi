@@ -1,8 +1,9 @@
-<h1>Create a challenge</h1>
+<h1>Créer un challenge</h1>
 
 <%= form_with url: challenges_path, local: true do |form| %>
   <%= form.text_field :title, :placeholder => 'Titre du challenge' %>
   <%= form.text_field :subtitle, :placeholder => 'Sous-titre du challenge' %>
   <%= form.text_area :description %>
   <%= form.submit %>
+
 <% end %>

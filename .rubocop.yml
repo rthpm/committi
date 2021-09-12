@@ -44,6 +44,10 @@ Layout/SpaceInsideBlockBraces:
   SpaceBeforeBlockParameters: false
 Layout/SpaceInsideRangeLiteral:
   Enabled: false
+Layout/TrailingWhitespace:
+  Enabled: false
+Layout/LeadingEmptyLines:
+  Enabbled: false
 
 Lint/SuppressedException:
   Enabled: false
