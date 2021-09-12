@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :homes
   resources :challenges, :path => 'c', :param => :slug do
-    resources :statuses, :path => 's', :except => [:show] do
+    resources :statuses, :path => 's', :except => [:show, :index] do
       resources :likes, only: [:create, :destroy]
+      resources :comments, :except => [:show, :index]
     end
   end
 

@@ -30,3 +30,9 @@ end
   Like.create!(user: User.all.sample,
                status: Status.all.sample)
 end
+
+50.times do
+  Comment.create!(user: User.all.sample,
+                  status: Status.all.sample,
+                  content: Faker::Lorem.paragraph(sentence_count: 4))
+end

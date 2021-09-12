@@ -10,6 +10,7 @@ class ChallengesController < ApplicationController
   def show
     @statuses = @challenge.statuses
     @status = Status.new
+    @comment = Comment.new
   end
 
   def new
