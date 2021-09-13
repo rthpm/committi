@@ -10,7 +10,7 @@ class Status < ApplicationRecord
             :presence => true,
             :length => { maximum: 100_000 }
 
-  # Steaks hook
+  # Streaks hook
   after_create :increment_streaks
 
 private
