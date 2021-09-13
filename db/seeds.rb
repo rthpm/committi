@@ -24,11 +24,6 @@ end
                  challenge: Challenge.all.sample)
 end
 
-100.times do
-  Like.create!(user: User.all.sample,
-               status: Status.all.sample)
-end
-
 50.times do
   Comment.create!(user: User.all.sample,
                   status: Status.all.sample,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_074358) do
+ActiveRecord::Schema.define(version: 2021_09_13_154635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2021_09_13_074358) do
     t.datetime "updated_at", null: false
     t.index ["status_id"], name: "index_comments_on_status_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "challenge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_enrollments_on_challenge_id"
+    t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -80,4 +89,6 @@ ActiveRecord::Schema.define(version: 2021_09_13_074358) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "enrollments", "challenges"
+  add_foreign_key "enrollments", "users"
 end

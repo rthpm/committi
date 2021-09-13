@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <%= form_with(model: [@challenge, @status], local: true) do |form| %>
+    <%= form.text_area :content %>
+    <%= form.submit %>
+  <% end %>
+<% end %>

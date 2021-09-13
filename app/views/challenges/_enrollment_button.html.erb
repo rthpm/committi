@@ -1,0 +1,10 @@
+<p>
+<% if user_signed_in? && enrolled?(@challenge, current_user) %>
+  <%= link_to "Quitter le challenge", challenge_enrollment_path(@challenge, Enrollment.find_by(user: current_user, challenge: @challenge)), method: "delete" %>
+<% elsif user_signed_in? %>
+  <%= link_to "Rejoindre les #{@challenge.enrollments.count} challengers", challenge_enrollments_path(@challenge), method: "post" %>
+<% else %>
+  <%= "#{@challenge.enrollments.count} challengers" %>
+<% end %>
+</p>
+

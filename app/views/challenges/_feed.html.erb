@@ -1,0 +1,30 @@
+<% @statuses.order('created_at').reverse.each do |status| %>
+  <%= image_tag @user.avatar_url(status.user, resize: "24x24!") %>
+  <h2><%= status.user.username %></h2>
+  <p><%= simple_format(status.content) %></p>
+
+  <p>
+  <% if user_signed_in? && liked?(status, current_user) %>
+    <%= link_to "#{status.likes.count} Likes", challenge_status_like_path(@challenge, status, Like.find_by(user: current_user, status: status)), method: "delete" %>
+  <% elsif user_signed_in? %>
+    <%= link_to "#{status.likes.count} Likes", challenge_status_likes_path(@challenge, status), method: "post" %>
+  <% else %>
+    <%= "#{status.likes.count} Likes" %>
+  <% end %>
+  </p>
+
+  <div>
+  <% if user_signed_in? %>
+    <%= form_with(model: [@challenge, status, @comment], local: true) do |form| %>
+      <%= form.text_area :content %>
+      <%= form.submit %>
+    <% end %>
+  <% end %>
+    <% status.comments.order('created_at').reverse.each do |comment| %>
+      <%= image_tag @user.avatar_url(comment.user, resize: "24x24!") %>
+      <p><b><%= comment.user.username %></b></p>
+      <p><%= simple_format(comment.content) %></p>
+    <% end %>
+  </div>
+<% end %>
+
