@@ -3,14 +3,12 @@ require 'faker'
 User.create!(email: 'test@localhost.xyz',
             username: 'test-admin',
             password: 'undeuxtrois',
-            is_admin: true,
-            screen_name: 'Test Admin')
+            is_admin: true)
 
 5.times do
   User.create!(email: Faker::Internet.unique.safe_email,
               username: Faker::Internet.unique.username(separators: %w(_ -)),
-              password: 'undeuxtrois',
-              screen_name: Faker::Name.name)
+              password: 'undeuxtrois')
 end
 
 4.times do

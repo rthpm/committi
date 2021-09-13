@@ -29,8 +29,8 @@ class User < ApplicationRecord
             :format => { :with => /\A[a-z0-9][a-z0-9_-]{0,24}\z/ },
             :uniqueness => { :case_sensitive => false }
 
-  validates :screen_name,
-            :length => { :maximum => 25 }
+  validates :bio,
+            :length => { :maximum => 300 }
 
   # For security & trust reasons
   BANNED_USERNAMES = ["admin", "administrator", "contact", "fraud", "guest",
@@ -45,10 +45,6 @@ class User < ApplicationRecord
   end
 
   # Helpers
-  def self.greet_who(user)
-    user.screen_name || user.username
-  end
-
   def login
     @login || self.username || self.email
   end
