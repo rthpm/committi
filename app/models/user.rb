@@ -70,4 +70,8 @@ class User < ApplicationRecord
   def likes_counter(user)
     Like.where(status: Status.where(user: user)).count
   end
+
+  def matching?(current_user, user)
+    current_user == user
+  end
 end

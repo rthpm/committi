@@ -1,0 +1,25 @@
+<h2>Statistiques</h2>
+
+<dl>
+  <dt>Likes</dt>
+  <dd><%= @user.likes_counter(@user) %></dd>
+  <dt>Status</dt>
+  <dd><%= @user.statuses_count %></dd>
+  <dt>Commentaires</dt>
+  <dd><%= @user.comments_count %></dd>
+</dl>
+
+<h2>Challenges auxquels vous participez</h2>
+<% if @user.challenges.count.nil? %>
+  <p>Vous participez à aucun challenge. Trouvez-en un sur la <%= link_to "list des challenges", challenges_path %></p>
+<% else %>
+  <% @user.challenges.each do |challenge| %>
+    <p>
+    <%= link_to challenge_path(challenge.slug) do %>
+      <%= challenge.title %> - <%= challenge.subtitle %>
+    <% end %>,
+    lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
+    </p>
+  <% end %>
+<% end %>
+

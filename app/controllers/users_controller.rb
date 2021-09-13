@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
   end
 
+  def homepage
+    @user = current_user
+  end
+
   def edit; end
 
   def profile; end

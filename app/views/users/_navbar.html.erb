@@ -1,0 +1,9 @@
+<ul>
+<% if @user.matching?(current_user, @user) %>
+  <li><%= link_to "Vos challenges", authenticated_root_path %></li>
+<% end %>
+<li><%= link_to "Profil", profile_path(@user.username) %></li>
+<% if @user.matching?(current_user, @user) %>
+<li><%= link_to "Éditer votre profil", profile_user_path %></li>
+<% end %>
+</ul>

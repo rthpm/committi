@@ -7,8 +7,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'homes#index'
-
   devise_for :user, :path => '', :path_names => { :sign_in => "login",
                                                   :sign_out => "logout",
                                                   :sign_up => "signup", }
@@ -21,4 +19,9 @@ Rails.application.routes.draw do
     end
   end
   get '/:username' => 'users#show', :as => 'profile'
+
+  authenticated :user do
+    root 'users#homepage', as: :authenticated_root
+  end
+  root 'homes#index'
 end
