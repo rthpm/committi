@@ -62,4 +62,12 @@ class User < ApplicationRecord
     hash = Digest::MD5.hexdigest(user.email.downcase)
     "https://secure.gravatar.com/avatar/#{hash}.png?s=#{size}&d=identicon&r=PG"
   end
+
+  delegate :count, to: :statuses, prefix: true
+
+  delegate :count, to: :comments, prefix: true
+
+  def likes_counter(user)
+    Like.where(status: Status.where(user: user)).count
+  end
 end

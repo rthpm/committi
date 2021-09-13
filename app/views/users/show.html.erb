@@ -7,6 +7,19 @@
   <dd><%= @user.email %>
   <dt>Bio</dt>
   <dd><%= simple_format(@user.bio) %></dd>
+</dl>
+
+<h2>Statistiques</h2>
+
 <dl>
+  <dt>Likes</dt>
+  <dd><%= @user.likes_counter(@user) %></dd>
+  <dt>Status</dt>
+  <dd><%= @user.statuses_count %></dd>
+  <dt>Commentaires</dt>
+  <dd><%= @user.comments_count %></dd>
+</dl>
+
+<h2>Challenges auxquels vous participez</h2>
 
 <%= link_to "Éditer votre profil", profile_user_path %>
