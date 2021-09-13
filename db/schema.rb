@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_154635) do
+ActiveRecord::Schema.define(version: 2021_09_13_203608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_154635) do
     t.bigint "challenge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "streaks", default: 0
     t.index ["challenge_id"], name: "index_enrollments_on_challenge_id"
     t.index ["user_id"], name: "index_enrollments_on_user_id"
   end

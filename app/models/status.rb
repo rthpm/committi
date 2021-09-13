@@ -9,4 +9,14 @@ class Status < ApplicationRecord
   validates :content,
             :presence => true,
             :length => { maximum: 100_000 }
+
+  # Steaks hook
+  after_create :increment_streaks
+
+private
+
+  def increment_streaks
+    e = Enrollment.find_by(user: self.user, challenge: self.challenge)
+    e.increment!(:streaks)
+  end
 end
