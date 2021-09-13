@@ -17,7 +17,7 @@
     <p>
     <%= link_to challenge_path(challenge.slug) do %>
       <%= challenge.title %> - <%= challenge.subtitle %>
-    <% end %>,
+    <% end %>
     </p>
   <% end %>
 <% end %>
@@ -30,8 +30,8 @@
     <p>
     <%= link_to challenge_path(enrollment.challenge.slug) do %>
       <%= enrollment.challenge.title %> - <%= enrollment.challenge.subtitle %>
-    <% end %>,
-    lancé par <%= link_to enrollment.challenge.user.username, profile_path(enrollment.challenge.user.username) %>
+    <% end %>
+    (<%= enrollment.streaks %> jours)
     </p>
   <% end %>
 <% end %>

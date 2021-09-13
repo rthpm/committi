@@ -11,7 +11,9 @@ class ChallengesController < ApplicationController
     @statuses = @challenge.statuses
     @status = Status.new
     @comment = Comment.new
-    @enrollment = @user.enrollments.find_by(challenge: @challenge)
+    if signed_in?
+      @enrollment = current_user.enrollments.find_by(challenge: @challenge)
+    end
   end
 
   def new

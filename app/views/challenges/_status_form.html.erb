@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && enrolled?(@challenge, current_user) %>
   <%= form_with(model: [@challenge, @status], local: true) do |form| %>
     <%= form.text_area :content %>
     <%= form.submit %>
