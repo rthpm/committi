@@ -4,6 +4,7 @@
     <div class="navbar-nav">
 			<%= link_to 'A propos', :url => '#', :class => 'nav-link-left' %>
 			<%= link_to 'Contact', :url => '#', :class => 'nav-link_left' %>
+			<%= link_to 'Challenges', challenges_path, :class => 'nav-link_left' %>
 	</div>
 	<%= link_to image_tag('committi-orange.svg'), root_path, :class => 'navbar-brand d-none d-lg-block'%>
 	<%= button_to "Login", new_user_session_path, :class => "btn", :id => "btn-navbar-login", :type => "button"%>

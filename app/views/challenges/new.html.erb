@@ -1,9 +1,11 @@
 <h1>Créer un challenge</h1>
 
+<div class="card bg-light mb-3" style="max-width: 18rem;">
 <%= form_with url: challenges_path, local: true do |form| %>
-  <%= form.text_field :title, :placeholder => 'Titre du challenge' %>
-  <%= form.text_field :subtitle, :placeholder => 'Sous-titre du challenge' %>
-  <%= form.text_area :description %>
-  <%= form.submit %>
-
+  <%= form.text_field :title, :placeholder => 'Titre du challenge', :class => 'form-control mb-3 card-header' %>
+  <div class="card-body">
+  <%= form.text_field :subtitle, :placeholder => 'Sous-titre du challenge', :class => 'card-title' %>
+  </div>
+  <%= form.text_area :description, :class => 'card-text' %>
+  <%= form.submit :placeholder => 'Enregistrer', :class => 'btn btn-primary'%>
 <% end %>
