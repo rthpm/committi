@@ -34,7 +34,6 @@ group :development do
   gem 'table_print'
   gem 'rubocop', '0.81', require: false
   gem 'rubocop-rails', require: false
-  gem 'letter_opener'
   gem 'faker'
 end
 
