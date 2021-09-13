@@ -12,5 +12,13 @@ Rails.application.routes.draw do
   devise_for :user, :path => '', :path_names => { :sign_in => "login",
                                                   :sign_out => "logout",
                                                   :sign_up => "signup", }
+
+  resource :user, :path => 'a', :only => [:edit, :profile] do
+    collection do
+      get 'profile'
+      patch 'update_profile'
+      patch 'update_email_and_password'
+    end
+  end
   get '/:username' => 'users#show', :as => 'profile'
 end

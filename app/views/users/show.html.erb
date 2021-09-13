@@ -5,4 +5,8 @@
   <dd><%= @user.username %></dd>
   <dt>Email</dt>
   <dd><%= @user.email %>
+  <dt>Bio</dt>
+  <dd><%= simple_format(@user.bio) %></dd>
 <dl>
+
+<%= link_to "Éditer votre profil", profile_user_path %>

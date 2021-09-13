@@ -1,0 +1,27 @@
+<h1>Changer vos informations de compte</h1>
+
+<%= form_for(@user, :url => { :action => "update_email_and_password" } ) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, :autocomplete => "email"  %>
+  </div>
+  <div class="field">
+    <%= f.label :password, "Password" %><br />
+    <%= f.password_field :password, :autocomplete => "off"  %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password %>
+  </div>
+  <div class="action_container">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>
