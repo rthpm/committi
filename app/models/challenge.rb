@@ -8,10 +8,11 @@ class Challenge < ApplicationRecord
             :uniqueness => true
 
   validates :title, :subtitle,
+            :presence => true,
             :length => { :maximum => 100 }
 
-  validates :title,
-            :presence => true
+  validates :description,
+            :length => { :maximum => 100_000 }
 
   # Tasks assigning
   after_create :update_slug
