@@ -7,7 +7,19 @@
 			<%= link_to 'Challenges', challenges_path, :class => 'nav-link_left' %>
 	</div>
 	<%= link_to image_tag('committi-orange.svg'), root_path, :class => 'navbar-brand d-none d-lg-block'%>
-	<%= button_to "Login", new_user_session_path, :class => "btn", :id => "btn-navbar-login", :type => "button"%>
-	<%= link_to "Log out", destroy_user_session_path, :class => "btn btn-danger", :type => "button", :method => 'delete' %>
+        <% if user_signed_in? %>
+          <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= current_user.username %>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><%= link_to "Nouveau challenge", new_challenge_path, :class => "dropdown-item" %></li>
+            <li><%= link_to "Préférences", profile_user_path, :class => "dropdown-item" %></li>
+             <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "dropdown-item", :method => 'delete' %></li>
+          </ul>
+          </div>
+        <% else %>
+          <%= link_to "Connexion", new_user_session_path, :class => "btn", :id => "btn-navbar-login", :type => "button"%>
+        <% end %>
   </div>
 </nav>
