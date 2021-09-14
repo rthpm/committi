@@ -1,25 +1,16 @@
-<h1>Changer vos informations de profil</h1>
 
-<%= form_for(@user, :url => { :action => "update_profile" } ) do |f| %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :bio%><br />
-    <%= f.text_area :bio %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+<h1 class="mb-5 mt-2">Changer vos informations de profil</h1>
+<div class="d-flex card mb-3 bg-light" style="width: 25%">
+  <%= form_for(@user, :url => { :action => "update_profile" } ) do |form| %>
+  <%= form.label 'Username' %>
+  <%= form.text_field :username, :class => 'form-control mb-3 card-header' %>
+  <%= form.label 'Bio' %>
+  <%= form.text_area :bio, :class => 'form-control mb-3 card-header' %>
+  <%= form.submit 'Update', :class => 'btn btn-primary mb-2', :id => 'btn-formulary' %>
 <% end %>
-
 <p>Changez votre avatar sur <%= link_to "Gravatar", "https://gravatar.com/" %></p>
- 
 <%= link_to "Préférences du compte", edit_user_path %>
-
 <%= link_to "Back", :back %>
+
 
