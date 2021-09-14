@@ -6,11 +6,13 @@
 </header>
 
 <h1>Les derniers challenges</h1>
-<% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
+<% unless @challenges.nil? %>
+  <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
     <p>
       <%= link_to challenge_path(challenge.slug) do %>
         <%= challenge.title %> - <%= challenge.subtitle %>
       <% end %>,
       lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
-      </p>
+    </p>
+  <% end %>
 <% end %>
