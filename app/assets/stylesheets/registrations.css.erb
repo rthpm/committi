@@ -1,0 +1,50 @@
+#form-container-registration {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-radius: 0;
+    box-shadow: 0px 0px 15px 0px #7b5530;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+.register-photo {
+    margin: 10%;
+}
+
+.register-photo .form-container {
+    display: table;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.register-photo .image-holder {
+    display: table-cell;
+    width: auto;
+    background: url(<%= asset_path("bg-registration.jpg") %>); 
+    background-size: cover;
+}
+
+.register-photo form {
+    display: table-cell;
+    width: 400px;
+    background-color: #ffffff;
+    padding: 40px 60px;
+    color: #505e6c;
+}
+
+.form-control {
+    border: dashed 1px #dd750a;
+    background: rgba(221, 116, 10, 0.349);
+}
+
+h2 {
+    color: #dd750a;
+}
+
+h1 {
+    color: #dd750a;
+}
