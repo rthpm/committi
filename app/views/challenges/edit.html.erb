@@ -1,0 +1,16 @@
+<h1 class="mb-5 mt-2">Modifier votre challenge</h1>
+<div class="d-flex card mb-3 bg-light" style="width: 25%">
+  <%= form_for(@challenge, :url => { :action => "update" } ) do |form| %>
+  <%= form.label :title %><br />
+  <%= form.text_field :title, :autocomplete => "title", :class => 'form-control mb-3 card-header'  %>
+
+  <%= form.label :subtitle %>
+  <%= form.text_field :subtitle, :autocomplete => "subtitle", :class => 'form-control mb-3 card-header'  %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description, :class => 'form-control mb-3 card-header' %>
+
+  <%= form.submit :class => 'btn btn-primary mb-2 action_container', :id => 'btn-formulary' %>
+<% end %>
+
+<%= button_to "Détruire ce challenge", challenge_path(@challenge.slug), data: { confirm: "Are you sure?" }, :class => "btn btn-outline-danger", method: :delete %>

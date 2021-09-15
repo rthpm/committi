@@ -12,7 +12,7 @@ User.create!(email: 'test@localhost.xyz',
 end
 
 4.times do
-  Challenge.create!(title: Faker::Book.title,
+  Challenge.create!(title: Faker::Book.unique.title,
                    subtitle: Faker::Book.title,
                    description: Faker::Lorem.paragraph(sentence_count: 4),
                    user: User.all.sample)

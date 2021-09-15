@@ -36,13 +36,31 @@ class ChallengesController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    if @challenge.update(challenge_params)
+      flash[:notice] = 'Challenge modifié'
+      redirect_to challenge_path(@challenge.slug)
+    else
+      flash[:alert] = 'Votre challenge n’a pas pu être modifié'
+      render :edit
+    end
+  end
 
-  def destroy; end
+  def destroy
+    @challenge.destroy
+    flash[:notice] = 'Challenge effacé'
+    redirect_to root_path
+  end
 
   def set_challenge
     @challenge = Challenge.find_by(slug: params[:slug])
     @user = @challenge.user
     @user_path = profile_path(@user.username)
+  end
+
+private
+
+  def challenge_params
+    params.require(:challenge).permit(:title, :subtitle, :description)
   end
 end

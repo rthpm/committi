@@ -62,6 +62,15 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "committi_#{Rails.env}"
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['SENDGRID_LOGIN'],
+    :password => ENV['SENDGRID_PWD'],
+    :domain => 'committi.herokuapp.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+  }
 
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: "committi.herokuapp.com" }
