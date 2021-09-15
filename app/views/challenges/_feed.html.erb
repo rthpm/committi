@@ -55,11 +55,21 @@
         </p>
       <% end %>
       <% if status.comments.count > 0 %>
-        <hr />
         <% status.comments.order('created_at').reverse.each do |comment| %>
-          <%= image_tag @user.avatar_url(comment.user, resize: "24x24!"), :class => "avatar" %>
-          <p><b><%= comment.user.username %></b></p>
-          <p><%= simple_format(comment.content) %></p>
+          <hr />
+          <div class="row">
+            <div class="col-2 text-center">
+              <%= image_tag @user.avatar_url(comment.user, size: "50x50!"), :class => "avatar mt-2" %>
+            </div>
+            <div class="col-auto">
+              <p class="text-secondary">
+              <%= link_to comment.user.username, profile_path(comment.user.username) %>
+              ·
+              <%= time_ago_in_words comment.updated_at %>
+              </p>
+              <p><%= simple_format(comment.content) %></p>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
