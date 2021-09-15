@@ -1,7 +1,7 @@
 
 
 <h1 class="mb-5 mt-2">Changer vos informations de profil</h1>
-<div class="card mb-3 p-5 shadow p-3 mb-5 bg-body rounded" style="width: 35%">
+<div class="card mb-3 p-5 shadow p-3 mb-5 bg-body rounded">
   <%= form_for(@user, :url => { :action => "update_profile" } ) do |form| %>
   <%= form.label 'Username' %>
   <%= form.text_field :username, :class => 'form-control mb-3 card-header' %>

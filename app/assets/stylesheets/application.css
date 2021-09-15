@@ -15,7 +15,7 @@
  *= 
  */
 body {
-    background-color: var(--bs-gray-400);
+    background-color: #f5f5f5;
 }
 
 .card {
@@ -36,4 +36,8 @@ body {
 
 .main {
     min-height: 100vh;
+}
+
+.container {
+	max-width: 960px;
 }
