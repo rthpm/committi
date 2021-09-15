@@ -8,7 +8,7 @@
             </h4>
       </h1>
       <div class="col-4">
-        <%= image_tag @user.avatar_url(@user, resize: "24x24!"), :class => "avatar" %>
+        <%= image_tag @user.avatar_url(@user, size: "80x80!"), :class => "avatar" %>
       </div>
       <div class="col-8">
         <p>Challenge lancé par <%= link_to @user.username, @user_path %></p>
