@@ -9,12 +9,11 @@
 <% unless @challenges.nil? %>
 
   
-    <div class="container"> 
-      <div class="row g-2">
+      <div class="row row-cols-3 justify-content-between">
         <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
+          <div class="col">
           <div class="card border border-1">
             <div class="card-body">
-              <div class="col-6">
                 <p>
                   <%= link_to challenge_path(challenge.slug) do %>
                   <%= challenge.title %> - <%= challenge.subtitle %>
@@ -25,7 +24,6 @@
             </div>
           </div>
         <% end %>
-      </div>
     </div>
 
 <% end %>
