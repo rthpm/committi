@@ -1,16 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <%= link_to image_tag('committi-orange.svg'), root_path, :class => 'navbar-brand d-lg-none' %>
-  <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
+  <div class="collapse navbar-collapse" id="navbarToggle">
 	<%= link_to image_tag('committi-orange.svg'), root_path, :class => 'navbar-brand d-none d-lg-block'%>
         <% if user_signed_in? %>
-          <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <%= current_user.username %>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><%= link_to "Nouveau challenge", new_challenge_path, :class => "dropdown-item" %></li>
-            <li><%= link_to "Préférences", profile_user_path, :class => "dropdown-item" %></li>
-             <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "dropdown-item", :method => 'delete' %></li>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropstart">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= current_user.username %>
+              </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><%= link_to "Nouveau challenge", new_challenge_path, :class => "dropdown-item" %></li>
+              <li><%= link_to "Préférences", profile_user_path, :class => "dropdown-item" %></li>
+               <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "dropdown-item", :method => 'delete' %></li>
+            </ul>
           </ul>
           </div>
         <% else %>

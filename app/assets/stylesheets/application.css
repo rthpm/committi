@@ -18,6 +18,10 @@ body {
     background-color: #f5f5f5;
 }
 
+.navbar-brand img {
+	max-height: 40px;
+}
+
 .card {
     border: none;
 }
