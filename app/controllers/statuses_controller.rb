@@ -1,6 +1,7 @@
 class StatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_status, only: [:edit, :update, :destroy]
+  before_action :has_rights?, only: [:edit]
 
   def new
     @status = Status.new
@@ -30,15 +31,22 @@ class StatusesController < ApplicationController
     end
   end
 
+  def destroy
+    @status.destroy
+    flash[:notice] = 'Status effacé'
+    redirect_to challenge_path(@challenge.slug)
+  end
+
   def set_status
     @status = Status.find(params[:id])
     @challenge = @status.challenge
   end
 
-  def destroy
-    @status.destroy
-    flash[:notice] = 'Status effacé'
-    redirect_to challenge_path(@challenge.slug)
+  def has_rights?
+    if current_user != @status.user
+      redirect_back fallback_location: root_path, 
+                    alert: 'Vous ne pouvez pas faire cela'
+    end
   end
 
 private
