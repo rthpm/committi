@@ -1,5 +1,5 @@
 <% @statuses.order('created_at').reverse.each do |status| %>
-  <%= image_tag @user.avatar_url(status.user, resize: "24x24!") %>
+  <%= image_tag @user.avatar_url(status.user, resize: "24x24!"), :class => "avatar" %>
 <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded">
   <h2><%= status.user.username %></h2>
   <p><%= simple_format(status.content) %></p>
@@ -31,7 +31,7 @@
     <% end %>
   <% end %>
     <% status.comments.order('created_at').reverse.each do |comment| %>
-      <%= image_tag @user.avatar_url(comment.user, resize: "24x24!") %>
+      <%= image_tag @user.avatar_url(comment.user, resize: "24x24!"), :class => "avatar" %>
       <p><b><%= comment.user.username %></b></p>
       <p><%= simple_format(comment.content) %></p>
     <% end %>

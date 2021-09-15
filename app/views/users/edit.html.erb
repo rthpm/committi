@@ -1,6 +1,6 @@
 <h1 class="mb-5 mt-2">Changer vos informations de compte</h1>
 <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded">
-  <%= form_for(@user, :url => { :action => "update_profile" } ) do |form| %>
+  <%= form_for(@user, :url => { :action => "update_email_and_password" } ) do |form| %>
   <%= form.label :email %><br />
   <%= form.email_field :email, :autocomplete => "email", :class => 'form-control mb-3 card-header'  %>
   <%= form.label :password, "Password" %>

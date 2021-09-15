@@ -1,7 +1,7 @@
 <% @user.statuses.order('created_at').reverse.each do |status| %>
   <div class="row">
     <div class="col">
-  <%= image_tag @user.avatar_url(status.user, resize: "24x24!") %>
+      <%= image_tag @user.avatar_url(status.user, resize: "24x24!"), :class => "avatar" %>
   <h2><%= status.user.username %></h2>
     </div>
     <div class="col">

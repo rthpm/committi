@@ -45,3 +45,7 @@ body {
 .container {
 	max-width: 960px;
 }
+
+.avatar {
+	border-radius: 5px;
+}
