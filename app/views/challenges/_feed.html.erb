@@ -3,15 +3,22 @@
   <h2><%= status.user.username %></h2>
   <p><%= simple_format(status.content) %></p>
 
-  <p>
-  <% if user_signed_in? && liked?(status, current_user) %>
-    <%= link_to "#{status.likes.count} Likes", challenge_status_like_path(@challenge, status, Like.find_by(user: current_user, status: status)), method: "delete" %>
-  <% elsif user_signed_in? %>
-    <%= link_to "#{status.likes.count} Likes", challenge_status_likes_path(@challenge, status), method: "post" %>
-  <% else %>
-    <%= "#{status.likes.count} Likes" %>
-  <% end %>
-  </p>
+  <div class="">
+
+    <% if user_signed_in? && liked?(status, current_user) %>
+      <%= link_to "#{status.likes.count} Likes", challenge_status_like_path(@challenge, status, Like.find_by(user: current_user, status: status)), method: "delete", :class => "btn btn-sm btn-danger" %>
+    <% elsif user_signed_in? %>
+      <%= link_to "#{status.likes.count} Likes", challenge_status_likes_path(@challenge, status), method: "post", :class => "btn btn-sm btn-outline-danger" %>
+    <% else %>
+      <div class="btn btn-sm btn-danger"><%= "#{status.likes.count} Likes" %></div>
+    <% end %>
+
+    <% if current_user == status.user %>
+      <%= link_to "Modifier", edit_challenge_status_path(@challenge.slug, status), :class => "btn btn-sm btn-outline-primary" %>
+      <%= link_to "Supprimer", challenge_status_path(@challenge.slug, status), data: { confirm: "Are you sure?" }, :class => "btn btn-sm btn-outline-danger", method: :delete %>
+    <% end %>
+
+  </div>
 
   <div>
     <details>
