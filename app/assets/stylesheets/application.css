@@ -14,7 +14,14 @@
  *= require_self
  *= 
  */
- 
+body {
+    background-color: var(--bs-gray-400);
+}
+
+.card {
+    border: none;
+}
+
 #btn-formulary {
     color: white;
     background-color: #dd750a;
