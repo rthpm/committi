@@ -22,6 +22,10 @@ body {
 	max-height: 40px;
 }
 
+.row {
+    flex-wrap: nowrap;
+}
+
 .card {
     border: none;
 }
