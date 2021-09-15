@@ -1,9 +1,10 @@
 <% @statuses.order('created_at').reverse.each do |status| %>
   <%= image_tag @user.avatar_url(status.user, resize: "24x24!") %>
+<div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded">
   <h2><%= status.user.username %></h2>
   <p><%= simple_format(status.content) %></p>
 
-  <div class="">
+  <div>
 
     <% if user_signed_in? && liked?(status, current_user) %>
       <%= link_to "#{status.likes.count} Likes", challenge_status_like_path(@challenge, status, Like.find_by(user: current_user, status: status)), method: "delete", :class => "btn btn-sm btn-danger" %>
@@ -36,5 +37,6 @@
     <% end %>
   </div>
     </details>
+</div>
 <% end %>
 
