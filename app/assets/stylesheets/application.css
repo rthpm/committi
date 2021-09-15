@@ -49,3 +49,29 @@ body {
 .avatar {
 	border-radius: 5px;
 }
+
+a,
+a.nodecoration:hover,
+.btn-link {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.dropdown-toggle.emptydrop::after {
+	content: none;
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details,
+summary {
+	display: inline;
+}
