@@ -1,78 +1,89 @@
 <% @statuses.order('created_at').reverse.each do |status| %>
-  <%= image_tag @user.avatar_url(status.user, size: "80x80!"), :class => "avatar" %>
-<div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded">
-  <h2><%= status.user.username %></h2>
-  <p><%= simple_format(status.content) %></p>
-
-  <div class="d-flex justify-content-around">
-
-    <% if user_signed_in? && liked?(status, current_user) %>
-      <%= link_to challenge_status_like_path(@challenge, status, Like.find_by(user: current_user, status: status)), method: "delete", :class => "btn btn-link text-danger nodecoration" do %>
-        <i class="bi bi-heart-fill"></i> <%= status.likes.count %>
-      <% end %>
-    <% elsif user_signed_in? %>
-      <%= link_to challenge_status_likes_path(@challenge, status), method: "post", :class => "btn btn-link text-black nodecoration" do %>
-        <i class="bi bi-heart"></i> <%= status.likes.count %>
-      <% end %>
-    <% else %>
-      <div class="btn btn-link text-black nodecoration">
-        <i class="bi bi-heart-fill"></i> <%= status.likes.count %>
-      </div>
-    <% end %>
-
-    <a class="btn btn-link text-black nodecoration" data-bs-toggle="collapse" href="#c<%= status.id %>" role="button" aria-expanded="false" aria-controls="#c<%= status.id %>">
-        <i class="bi bi-chat"></i> <%= status.comments.count %>
-      </a>
-
-    <% if current_user == status.user %>
-      <div class="btn-group dropup">
-        <button type="button" class="btn btn-link dropdown-toggle nodecoration text-black emptydrop" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-box-arrow-in-up"></i>
-        </button>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Supprimer", challenge_status_path(@challenge.slug, status), data: { confirm: "Are you sure?" }, :class => "text-danger", method: :delete %></li>
-          <li><%= link_to "Modifier", edit_challenge_status_path(@challenge.slug, status), :class => "text-black" %></li>
-        </ul>
-      </div>
-    <% else %>
-      <div><!-- An empty div to pad the card --></div>
-    <% end %>
-
+  <div class="row">
+    <div class="col-2 text-center mt-4">
+      <%= image_tag @user.avatar_url(status.user, size: "80x80!"), :class => "avatar" %>
+      <p><%= link_to status.user.username, profile_path(status.user.username), :class => "text-black breakword" %></p>
     </div>
-    <div class="collapse" id="c<%= status.id %>">
-      <% if user_signed_in? %>
-        <div class="my-3">
-      <%= form_with(model: [@challenge, status, @comment], local: true) do |form| %>
-        <%= form.text_area :content, :class => "form-control mb-3" %>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <%= form.submit "Envoyer", :class => "btn btn-primary btn-right" %>
+    <div class="col">
+      <div class="card mb-3 shadow-lg p-4 mb-5 bg-body rounded">
+        <div class="status">
+          <%= simple_format(status.content) %>
         </div>
+
+        <div class="d-flex justify-content-around mt-4">
+
+          <% if user_signed_in? && liked?(status, current_user) %>
+            <%= link_to challenge_status_like_path(@challenge, status, Like.find_by(user: current_user, status: status)), method: "delete", :class => "btn btn-link text-danger nodecoration" do %>
+              <i class="bi bi-heart-fill"></i> <%= status.likes.count %>
+            <% end %>
+          <% elsif user_signed_in? %>
+            <%= link_to challenge_status_likes_path(@challenge, status), method: "post", :class => "btn btn-link text-black nodecoration" do %>
+              <i class="bi bi-heart"></i> <%= status.likes.count %>
+            <% end %>
+          <% else %>
+            <div class="btn btn-link text-black nodecoration">
+              <i class="bi bi-heart-fill"></i> <%= status.likes.count %>
+            </div>
+          <% end %>
+
+          <a class="btn btn-link text-black nodecoration" data-bs-toggle="collapse" href="#c<%= status.id %>" role="button" aria-expanded="false" aria-controls="#c<%= status.id %>">
+            <i class="bi bi-chat"></i> <%= status.comments.count %>
+          </a>
+
+          <% if current_user == status.user %>
+            <div class="btn-group dropup">
+              <button type="button" class="btn btn-link dropdown-toggle nodecoration text-black emptydrop" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-box-arrow-in-up"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Supprimer", challenge_status_path(@challenge.slug, status), data: { confirm: "Are you sure?" }, :class => "text-danger", method: :delete %></li>
+                <li><%= link_to "Modifier", edit_challenge_status_path(@challenge.slug, status), :class => "text-black" %></li>
+              </ul>
+            </div>
+          <% else %>
+            <button type="button" class="btn btn-link nodecoration text-white emptydrop" disabled>
+              <i class="bi bi-box-arrow-in-up"></i>
+            </button>
+          <% end %>
         </div>
-        <% end %>
-      <% else %>
-        <p class="my-3">
-          <%= link_to "Connectez-vous", new_user_session_path %> pour envoyer un commentaire
-        </p>
-      <% end %>
-      <% if status.comments.count > 0 %>
-        <% status.comments.order('created_at').reverse.each do |comment| %>
-          <hr />
-          <div class="row">
-            <div class="col-2 text-center">
-              <%= image_tag @user.avatar_url(comment.user, size: "50x50!"), :class => "avatar mt-2" %>
+
+        <div class="collapse" id="c<%= status.id %>">
+          <% if user_signed_in? %>
+            <div class="my-3">
+              <%= form_with(model: [@challenge, status, @comment], local: true) do |form| %>
+                <%= form.text_area :content, :class => "form-control mb-3" %>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <%= form.submit "Envoyer", :class => "btn btn-primary btn-right" %>
+                </div>
+              <% end %>
             </div>
-            <div class="col-auto">
-              <p class="text-secondary">
-              <%= link_to comment.user.username, profile_path(comment.user.username) %>
-              ·
-              <%= time_ago_in_words comment.updated_at %>
-              </p>
-              <p><%= simple_format(comment.content) %></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+          <% else %>
+            <p class="my-3">
+              <%= link_to "Connectez-vous", new_user_session_path %> pour envoyer un commentaire
+            </p>
+          <% end %>
+          <% if status.comments.count > 0 %>
+            <% status.comments.order('created_at').reverse.each do |comment| %>
+              <hr />
+              <div class="row">
+                <div class="col-2 text-center">
+                  <%= image_tag @user.avatar_url(comment.user, size: "50x50!"), :class => "avatar mt-2" %>
+                </div>
+                <div class="col">
+                  <p class="text-secondary">
+                    <%= link_to comment.user.username, profile_path(comment.user.username) %>
+                    ·
+                    <%= time_ago_in_words comment.updated_at %>
+                  </p>
+                  <div class="comment">
+                    <%= simple_format(comment.content) %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
-

@@ -1,8 +1,8 @@
 <p>
 <% if user_signed_in? && enrolled?(@challenge, current_user) %>
-  <%= link_to "Quitter le challenge", challenge_enrollment_path(@challenge, Enrollment.find_by(user: current_user, challenge: @challenge)), method: "delete" %>
+  <%= link_to "Quitter le challenge", challenge_enrollment_path(@challenge, Enrollment.find_by(user: current_user, challenge: @challenge)), method: "delete", :class => "btn btn-outline btn-primary" %>
 <% elsif user_signed_in? %>
-  <%= link_to "Rejoindre les #{@challenge.enrollments.count} challengers", challenge_enrollments_path(@challenge), method: "post" %>
+  <%= link_to "Rejoindre les #{@challenge.enrollments.count} challengers", challenge_enrollments_path(@challenge), method: "post", :class => "btn btn-primary" %>
 <% else %>
   <%= "#{@challenge.enrollments.count} challengers" %>
 <% end %>
