@@ -1,9 +1,17 @@
 <% @user.statuses.order('created_at').reverse.each do |status| %>
+  <div class="row">
+    <div class="col">
   <%= image_tag @user.avatar_url(status.user, resize: "24x24!") %>
   <h2><%= status.user.username %></h2>
-  <p><%= simple_format(status.content) %></p>
+    </div>
+    <div class="col">
+    <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded">
+      <p><%= simple_format(status.content) %></p>
 
-  <p>
-    <%= "#{status.likes.count} Likes" %>
-  </p>
+      <p>
+        <%= "#{status.likes.count} Likes" %>
+      </p>
+    </div>
+    </div>
+  </div>
 <% end %>
