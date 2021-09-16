@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_203608) do
+ActiveRecord::Schema.define(version: 2021_09_16_121945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "challenges", force: :cascade do |t|
     t.string "title", limit: 300, default: "", null: false
@@ -23,6 +30,8 @@ ActiveRecord::Schema.define(version: 2021_09_13_203608) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_challenges_on_category_id"
     t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
@@ -90,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_203608) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "challenges", "categories"
   add_foreign_key "enrollments", "challenges"
   add_foreign_key "enrollments", "users"
 end
