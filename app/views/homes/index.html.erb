@@ -5,14 +5,27 @@
         </div> 
 </header>
 
-<h1>Les derniers challenges</h1>
+<h1 class="mb-4">Les derniers challenges</h1>
 <% unless @challenges.nil? %>
-  <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
-    <p>
-      <%= link_to challenge_path(challenge.slug) do %>
-        <%= challenge.title %> - <%= challenge.subtitle %>
-      <% end %>,
-      lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
-    </p>
-  <% end %>
+
+  
+    <div class="container"> 
+      <div class="row row-cols-3 g-2 flex-wrap">
+        <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
+          <div class="card border border-1">
+            <div class="card-body">
+              <div class="col-12">
+                <p>
+                  <%= link_to challenge_path(challenge.slug) do %>
+                  <%= challenge.title %> - <%= challenge.subtitle %>
+                  <% end %>
+                  lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
 <% end %>
