@@ -2,7 +2,8 @@ class ChallengesController < ApplicationController
   include ApplicationHelper
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :has_rights?, only: [:edit]
+  before_action :has_rights?, only: [:edit, :update, :destroy]
+  before_action :ownership, only: [:edit, :update, :destoy]
 
   def index
     @challenges = Challenge.all
@@ -57,6 +58,14 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find_by(slug: params[:slug])
     @user = @challenge.user
     @user_path = profile_path(@user.username)
+  end
+
+  def ownership
+    return true if current_user.is_admin
+    if current_user != @challenge.user
+      redirect_back fallback_location: root_path,
+                    alert: 'Vous ne pouvez pas faire cela'
+    end
   end
 
 private
