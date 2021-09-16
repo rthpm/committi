@@ -1,6 +1,9 @@
 <% if user_signed_in? && enrolled?(@challenge, current_user) %>
-  <% if @enrollment.streaks > 0 %>
-  <p><%= @enrollment.streaks %> jours de participation consécutifs&nbsp;!</p>
+  <% if @enrollment.streaks > 0 || @challenge.statuses.where(user: @user).count %>
+    <p><b>
+      Séries&nbsp;: <%= @enrollment.streaks %>
+      Status&nbsp;: <%= @challenge.statuses.where(user: @user).count %>
+    </b></p>
   <% elsif @enrollment.streaks = 0 %>
     <p>Vous n’avez aucune progression sur ce challenge.</p>
   <% end %>

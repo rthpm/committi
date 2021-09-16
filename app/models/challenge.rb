@@ -5,12 +5,15 @@ class Challenge < ApplicationRecord
   has_many :enrollments, :dependent => :destroy
 
   # Validation rules
+  validates :title,
+            :length => { :minimum => 5, :maximum => 50 }
+
   validates :slug, :title,
             :uniqueness => true
 
   validates :title, :subtitle,
             :presence => true,
-            :length => { :maximum => 100 }
+            :length => { :maximum => 50 }
 
   validates :description,
             :length => { :maximum => 100_000 }
@@ -25,7 +28,7 @@ class Challenge < ApplicationRecord
 
   def create_slug
     slug = self.title.parameterize
-    if slug.empty?
+    if slug.empty? || slug.length < self.title.length
       self.id
     else
       slug
