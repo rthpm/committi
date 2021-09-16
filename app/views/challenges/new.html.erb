@@ -7,6 +7,8 @@
   <%= form.text_field :title, :class => 'form-control mb-3 card-header' %>
   <%= form.label 'Sous-titre du challenge', :class => 'mandatory'%>
   <%= form.text_field :subtitle, :placeholder => 'Faites une courte description', :class => 'form-control mb-3 card-header' %>
+  <%= form.label 'Catégorie' %>
+  <%= form.collection_select :category, @categories, :slug, :name, { include_blank: false },  { class: "form-control form-select mb-3" } %>
   <%= form.label 'Résumé du challenge' %>
   <%= form.text_area :description, :class => 'form-control mb-3 card-header' %>
   <%= form.submit :placeholder => 'Enregistrer', :class => 'btn btn-primary mb-2', :id => 'btn-formulary' %>

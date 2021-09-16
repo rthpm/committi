@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
   include ApplicationHelper
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :create, :edit, :update]
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :has_rights?, only: [:edit, :update, :destroy]
   before_action :ownership, only: [:edit, :update, :destoy]
@@ -23,10 +24,12 @@ class ChallengesController < ApplicationController
   end
 
   def create
+    @category = Category.find_by(slug: params[:category])
     @challenge = Challenge.create(user: current_user,
                                   title: params[:title],
                                   subtitle: params[:subtitle],
-                                  description: params[:description])
+                                  description: params[:description],
+                                  category: @category)
     if @challenge.save
       flash[:notice] = 'Nouveau challenge créé'
       redirect_to challenge_path(@challenge.slug)
@@ -60,6 +63,10 @@ class ChallengesController < ApplicationController
     @user_path = profile_path(@user.username)
   end
 
+  def set_categories
+    @categories = Category.all
+  end
+
   def ownership
     return true if current_user.is_admin
     if current_user != @challenge.user
@@ -71,6 +78,6 @@ class ChallengesController < ApplicationController
 private
 
   def challenge_params
-    params.require(:challenge).permit(:title, :subtitle, :description)
+    params.require(:challenge).permit(:title, :subtitle, :description, :category_slug)
   end
 end

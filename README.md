@@ -34,6 +34,12 @@ Use the steps below for a local install.
     ```sh
     ; rails db:create db:migrate db:seed
     ```
+- Categories creation never involves the user. So we decided to generate them
+    “manually” from a script, or from the console, if you have more urgent
+    needs.
+    ```sh
+    ; rails r lib/tasks/create_categories.rb
+    ```
 - Launch the application:
     ```sh
     ; rails s

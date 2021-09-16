@@ -1,6 +1,7 @@
 class Challenge < ApplicationRecord
   # Relationships
   belongs_to :user
+  belongs_to :category
   has_many :statuses, :dependent => :destroy
   has_many :enrollments, :dependent => :destroy
 
@@ -18,7 +19,7 @@ class Challenge < ApplicationRecord
   validates :description,
             :length => { :maximum => 100_000 }
 
-  # Tasks assigning
+  # Slug assigning
   after_create :update_slug
   before_update :assign_slug
 

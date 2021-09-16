@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   resources :homes
-  resources :challenges, :path => 'c', :param => :slug do
+  resources :challenges, :path => 'c', :param => :slug, :except => [:index] do
     resources :enrollments, only: [:create, :destroy]
     resources :statuses, :path => 's', :except => [:show, :index] do
       resources :likes, only: [:create, :destroy]
       resources :comments, :except => [:show, :index]
     end
   end
+
+  # Not a typo
+  resources :categories, :path => 'challenges', :param => :slug, :only => [:index, :show]
 
   devise_for :user, :path => '', :path_names => { :sign_in => "login",
                                                   :sign_out => "logout",
