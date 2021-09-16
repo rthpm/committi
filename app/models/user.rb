@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   validates :username,
             :presence => true,
-            :length => { :maximum => 50, :minimum => 3 },
+            :length => { :maximum => 15, :minimum => 3 },
             # Alphanumeric username, dashes allowed but not at the start
             :format => { :with => /\A[a-z0-9][a-z0-9_-]{0,24}\z/ },
             :uniqueness => { :case_sensitive => false }

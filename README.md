@@ -1,42 +1,40 @@
-Project :
+# Committi
 
-it is a social network of challenge where the objective is to make them succeed.
+Turn your ambition into community challenge!
 
-Gems used in development test: 
+Committi is a social network that aims to help people tackling challenges and
+goals with a community twist. Want to write 200 words a day? Why would you keep
+that goal to yourself? Have fun together!
 
-gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-gem 'dotenv-rails'
+Visit the homepage for more information: https://committi.herokuapp.com
 
 
-Gems used in development:
+## Initial setup
 
-gem 'web-console', '>= 3.3.0'
-gem 'listen', '>= 3.0.5', '< 3.2'
-gem 'spring'
-gem 'spring-watcher-listen', '~> 2.0.0'
-gem 'better_errors'
-gem 'binding_of_caller' # Better errors dependency
-gem 'table_print'
-gem 'rubocop', '0.81', require: false
-gem 'rubocop-rails', require: false
-gem 'letter_opener'
-gem 'faker'
+Use the steps below for a local install.
 
-The other gems:
-
-gem 'rails', '~> 5.2.6'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'devise'
-gem 'devise-i18n'
-gem 'strong_password', '~> 0.0.9'
-gem 'aws-sdk-s3', '~> 1' # We use Backblaze’s S3 API
-gem 'stripe'
-
-herokuapp link : http://committi.herokuapp.com 
+- Install the ruby version specified in `.ruby-version`.
+- Checkout the `front` branch from the repository:
+    ```sh
+    ; git clone https://github.com/rthpm/committi
+    ; cd committi
+    ```
+- Run bundler to install the gems needed for the project:
+    ```sh
+    ; bundle
+    ```
+- Install `mailcatcher` to intercept outgoing emails in a development
+    environment:
+    ```sh
+    ; gem install mailcatcher
+    ; mailcatcher # mailcatcher will run in the background
+    ```
+- Create the databases, run the migration, and give the seed some work:
+    - You need a working `postgresql` installation
+    ```sh
+    ; rails db:create db:migrate db:seed
+    ```
+- Launch the application:
+    ```sh
+    ; rails s
+    ```
