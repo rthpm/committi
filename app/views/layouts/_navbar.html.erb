@@ -3,23 +3,23 @@
     <%= link_to image_tag('committi-orange.svg'), root_path%>
   </div>
   <div class="collapse navbar-collapse" id="navbarToggle">
-        <% if user_signed_in? %>
-        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropstart">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <%= current_user.username %>
-              </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><%= link_to "Tous les challenges", categories_path, :class => "dropdown-item" %></li>
-              <li><%= link_to "Nouveau challenge", new_challenge_path, :class => "dropdown-item" %></li>
-              <li><%= link_to "Préférences", profile_user_path, :class => "dropdown-item" %></li>
-               <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "dropdown-item bg-danger", :method => 'delete' %></li>
-            </ul>
-          </ul>
-          </div>
-        <% else %>
-          <%= link_to "Connexion", new_user_session_path, :class => "btn btn-success border border-white border-2", :type => "button"%>
-        <% end %>
+    <% if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropstart">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.username %>
+          </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+          <li><%= link_to "Tous les challenges", categories_path, :class => "dropdown-item" %></li>
+          <li><%= link_to "Nouveau challenge", new_challenge_path, :class => "dropdown-item" %></li>
+          <li><%= link_to "Préférences", profile_user_path, :class => "dropdown-item" %></li>
+           <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "dropdown-item bg-danger", :method => 'delete' %></li>
+        </ul>
+      </ul>
+      </div>
+    <% else %>
+      <%= link_to "Connexion", new_user_session_path, :class => "btn btn-success border border-white border-2", :type => "button"%>
+    <% end %>
   </div>
 </nav>

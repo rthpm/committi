@@ -6,10 +6,6 @@ class ChallengesController < ApplicationController
   before_action :has_rights?, only: [:edit, :update, :destroy]
   before_action :ownership, only: [:edit, :update, :destoy]
 
-  def index
-    @challenges = Challenge.all
-  end
-
   def show
     @statuses = @challenge.statuses
     @status = Status.new
