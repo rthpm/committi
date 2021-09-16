@@ -24,7 +24,7 @@
 
 <h2>Challenges auxquels vous participez</h2>
 <% if @user.enrollments.count == 0 %>
-  <p>Vous participez à aucun challenge. Trouvez-en un sur la <%= link_to "liste des challenges", challenges_path %></p>
+  <p>Vous participez à aucun challenge. Trouvez-en un sur la <%= link_to "liste des challenges", categories_path %></p>
 <% else %>
   <% @user.enrollments.each do |enrollment| %>
     <p>

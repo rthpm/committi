@@ -9,8 +9,8 @@
 <h1 class="mb-4">Les derniers challenges</h1>
 <% unless @challenges.nil? %>
 
-  
-    <div class="container"> 
+
+    <div class="container">
       <div class="row row-cols-3 g-2 flex-wrap">
         <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
           <div class="card border border-1">
