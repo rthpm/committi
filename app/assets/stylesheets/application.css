@@ -70,12 +70,12 @@ a:hover {
 
 .card p:last-child,
 .status p:last-child,
-.comment p:last-child {
+.comment p:last-child,
+.container p:last-child {
   margin-bottom: 0;
 }
 
 .pageheader {
-  background: #fff;
   border: 1px solid #dddddd;
   width: 100vw;
   position: relative;
