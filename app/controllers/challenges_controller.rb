@@ -59,13 +59,6 @@ class ChallengesController < ApplicationController
     @user_path = profile_path(@user.username)
   end
 
-  def has_rights?
-    if current_user != @challenge.user
-      redirect_back fallback_location: root_path, 
-                    alert: 'Vous ne pouvez pas faire cela'
-    end
-  end
-
 private
 
   def challenge_params

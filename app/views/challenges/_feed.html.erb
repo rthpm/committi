@@ -30,7 +30,7 @@
             <i class="bi bi-chat"></i> <%= status.comments.count %>
           </a>
 
-          <% if current_user == status.user %>
+          <% if has_rights? %>
             <div class="btn-group dropup">
               <button type="button" class="btn btn-link dropdown-toggle nodecoration text-black emptydrop" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-box-arrow-in-up"></i>

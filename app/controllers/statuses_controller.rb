@@ -1,4 +1,5 @@
 class StatusesController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
   before_action :set_status, only: [:edit, :update, :destroy]
   before_action :has_rights?, only: [:edit]
@@ -40,13 +41,6 @@ class StatusesController < ApplicationController
   def set_status
     @status = Status.find(params[:id])
     @challenge = @status.challenge
-  end
-
-  def has_rights?
-    if current_user != @status.user
-      redirect_back fallback_location: root_path, 
-                    alert: 'Vous ne pouvez pas faire cela'
-    end
   end
 
 private
