@@ -14,6 +14,7 @@ module ApplicationHelper
   end
 
   def has_rights?
+    return false unless user_signed_in?
     return true if current_user.is_admin
     if current_user != @status.user
       redirect_back fallback_location: root_path,
