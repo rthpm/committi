@@ -1,5 +1,5 @@
-<div class="pageheader mb-5 py-5">
-  <div class="container">
+<div class="pageheader px-5 pt-5 mb-5">
+  <div class="container mb-5">
     <h1 class= "h3">
       <%= @challenge.title %><br />
     </h1>
@@ -7,25 +7,28 @@
       <%= @challenge.subtitle %>
     </h2>
   </div>
+  <div class="container">
+    <div class="d-flex justify-content-around text-secondary pb-2">
+      <div><%= @challenge.enrollments.count %> participants</div>
+      <div><%= @statuses.count %> status</div>
+    </div>
+  </div>
 </div>
 <div class="row flex-wrap">
   <div class="card mb-3 shadow-lg p-4 mb-5 bg-body rounded">
     <%= simple_format(@challenge.description) %>
   </div>
   <div class="col-9">
-    <%= render "streaks_counter.html" %>
     <%= render "status_form.html" %>
-    <p><%= @statuses.count %> status</p>
     <%= render "feed.html" %>
   </div>
   <div class="col-3">
-    <div class="text-center">
-      <span class="h5">Challenge lancé par</span>
-      <div class="my-3">
-        <%= image_tag @user.avatar_url(@user, size: "80x80!"), :class => "avatar" %><br />
-        <%= link_to @user.username, @user_path %>
-      </div>
+    <%= render "streaks_counter.html" %>
         <%= render "enrollment_button.html" %>
+      <span class="h5">Challenge lancé par</span>
+      <div class="my-3 text-center">
+        <%= image_tag @user.avatar_url(@user, size: "45x45!"), :class => "avatar me-3" %>
+        <%= link_to @user.username, @user_path %><br />
       </div>
-  </div>
+      </div>
 </div>
