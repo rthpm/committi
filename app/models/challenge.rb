@@ -24,7 +24,12 @@ class Challenge < ApplicationRecord
   end
 
   def create_slug
-    self.title.parameterize
+    slug = self.title.parameterize
+    if slug.empty?
+      self.id
+    else
+      slug
+    end
   end
 
 private
