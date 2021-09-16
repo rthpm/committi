@@ -19,7 +19,14 @@
       </ul>
       </div>
     <% else %>
-      <%= link_to "Connexion", new_user_session_path, :class => "btn btn-success border border-white border-2", :type => "button"%>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Connexion", new_user_session_path, :class => "nav-link", :type => "button"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Inscription", new_user_registration_path, :class => "nav-link", :type => "button"%>
+        </li>
+      </ul>
     <% end %>
   </div>
 </nav>

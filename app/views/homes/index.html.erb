@@ -1,7 +1,7 @@
 <div class="pageheader mb-5">
   <header class="text-center text-white masthead" id="bg-index-committi">
     <div class="container">
-      <p class="header-p">Vous avez toujours voulu vous dépasser avec des défis? Venez créer les vôtres en rejoignant la communauté de Committi</p>
+      <p class="header-p h2 p-5">Vous avez toujours voulu vous dépasser avec des défis? Venez créer les vôtres en rejoignant la communauté de Committi</p>
       <%= link_to "S'inscrire", new_user_registration_path, :class => "btn btn-primary", :id => "btn", :type => "button" %>
     </div>
   </header>
@@ -10,23 +10,21 @@
 <h1 class="mb-4">Les derniers challenges</h1>
 <% unless @challenges.nil? %>
 
-    <div class="container">
-      <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6 g-2 flex-wrap">
-        <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
-          <div class="card border border-1">
-            <div class="card-body">
-              <div class="col-12">
-                <p>
-                  <%= link_to challenge_path(challenge.slug) do %>
-                  <%= challenge.title %> - <%= challenge.subtitle %>
-                  <% end %>
-                  lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
-                </p>
-              </div>
-            </div>
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6 g-2 flex-wrap d-flex align-items-stretch">
+    <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
+      <div class="col">
+        <div class="card border border-1">
+          <div class="card-body">
+            <p>
+              <%= link_to challenge_path(challenge.slug) do %>
+                <%= challenge.title %> - <%= challenge.subtitle %>
+              <% end %>
+              lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
+            </p>
           </div>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
+  </div>
 
 <% end %>
