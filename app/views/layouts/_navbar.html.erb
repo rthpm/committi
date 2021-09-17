@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="navbar-brand">
-    <%= link_to image_tag('committi-orange.svg'), root_path%>
-  </div>
+    <%= link_to "committi", root_path, :class => "navbar-brand"%>
   <div class="collapse navbar-collapse" id="navbarToggle">
     <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
