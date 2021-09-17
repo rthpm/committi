@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
+    @comment = Comment.new
   end
 
   def homepage
