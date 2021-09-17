@@ -16,9 +16,11 @@
 </div>
 
 <div class="row flex-wrap">
-  <div class="card mb-3 shadow-lg p-4 mb-5 bg-body rounded">
-    <%= simple_format(@challenge.description) %>
-  </div>
+  <% unless @challenge.description.empty? %>
+    <div class="card mb-3 shadow-lg p-4 mb-5 bg-body rounded">
+      <%= simple_format(@challenge.description) %>
+    </div>
+  <% end %>
   <div class="col-9">
     <%= render "status_form.html" %>
     <%= render "feed.html" %>
