@@ -6,17 +6,21 @@
   <div class="container pb-2">
     <ul class="d-flex justify-content-around nav">
       <% if @user.matching?(current_user, @user) %>
+        <li>
         <% if current_page?(authenticated_root_path) %>
-          <li><%= link_to "Vos challenges", authenticated_root_path, :class => "nav-link active" %></li>
+          <%= link_to "Vos challenges", authenticated_root_path, :class => "nav-link active" %>
         <% else %>
-          <li><%= link_to "Vos challenges", authenticated_root_path, :class => "nav-link link-dark" %></li>
+          <%= link_to "Vos challenges", authenticated_root_path, :class => "nav-link link-dark" %>
         <% end %>
+        </li>
       <% end %>
+      <li>
       <% if current_page?(profile_path(@user.username)) %>
-      <li><%= link_to "Profil", profile_path(@user.username), :class => "nav-link active" %></li>
+      <%= link_to "Profil", profile_path(@user.username), :class => "nav-link active" %>
       <% else %>
-      <li><%= link_to "Profil", profile_path(@user.username), :class => "nav-link link-dark" %></li>
+      <%= link_to "Profil", profile_path(@user.username), :class => "nav-link link-dark" %>
       <% end %>
+      </li>
       <% if @user.matching?(current_user, @user) %>
       <li><%= link_to "Éditer votre profil", profile_user_path, :class => "nav-link link-dark" %></li>
       <% end %>
