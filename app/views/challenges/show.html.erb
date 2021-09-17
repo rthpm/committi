@@ -34,7 +34,7 @@
         <%= link_to @user.username, @user_path %><br />
       </div>
       <% if has_rights? %>
-        <%= link_to "Modifier ce challenge", edit_challenge_path(@challenge), :class => "btn btn-primary" %>
+        <%= link_to "Modifier ce challenge", edit_challenge_path(@challenge.slug), :class => "btn btn-primary" %>
       <% end %>
     </div>
 </div>
