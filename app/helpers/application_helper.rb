@@ -15,6 +15,6 @@ module ApplicationHelper
 
   def has_rights?
     return false unless user_signed_in?
-    return true if current_user.is_admin
+    return true if current_user.is_admin || current_user == @user
   end
 end
