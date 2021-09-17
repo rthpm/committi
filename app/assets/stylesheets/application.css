@@ -161,3 +161,7 @@ a.btn.btn-outline.btn-primary:hover {
 a.active {
   font-weight: bold;
 }
+
+.stats {
+  max-width: 180px;
+}

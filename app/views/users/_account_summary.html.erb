@@ -1,37 +1,94 @@
 <h2>Statistiques</h2>
 
-<dl>
-  <dt>Likes</dt>
-  <dd><%= @user.likes_counter(@user) %></dd>
-  <dt>Status</dt>
-  <dd><%= @user.statuses_count %></dd>
-  <dt>Commentaires</dt>
-  <dd><%= @user.comments_count %></dd>
-</dl>
+<div class="row g-2">
+  <div class="col stats">
+    <div class="card border border-1 text-center">
+      <div class="card-body">
+        <span class="h4"><%= @user.likes_counter(@user) %></span><br />
+        Likes
+      </div>
+    </div>
+  </div>
+  <div class="col stats">
+    <div class="card border border-1 text-center">
+      <div class="card-body">
+      <span class="h4"><%= @user.statuses_count %></span><br />
+      Status
+      </div>
+    </div>
+  </div>
+  <div class="col stats">
+    <div class="card border border-1 text-center">
+      <div class="card-body">
+      <span class="h4"><%= @user.comments_count %></span><br />
+      Commentaires
+    </div>
+  </div>
+</div>
 
-<h2>Challenges que vous administrez</h2>
+<h2 class="mt-4">Challenges que vous administrez</h2>
 <% if @user.challenges.count == 0 %>
   <p>Vous n’administrez challenge. <%= link_to "Créez-en un !", new_challenge_path %></p>
 <% else %>
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-2 flex-wrap d-flex align-items-stretch">
   <% @user.challenges.each do |challenge| %>
-    <p>
-    <%= link_to challenge_path(challenge.slug) do %>
-      <%= challenge.title %> - <%= challenge.subtitle %>
-    <% end %>
-    </p>
+    <div class="col">
+      <div class="card border border-1">
+        <div class="card-header px-4 py-3">
+          <%= link_to challenge_path(challenge.slug), :class => "link-dark h4" do %>
+            <%= challenge.title %>
+          <% end %>
+            <p class="pt-2">
+            <%= link_to "Modifier", edit_challenge_path(challenge.slug), :class => "link-danger" %>
+            </p>
+        </div>
+          <div class="card-body text-center">
+            <p><%= challenge.subtitle %></p>
+            <div class="d-flex justify-content-around">
+              <div>
+                <span class="h4"><%= challenge.enrollments.count %></span><br />
+                Participants
+              </div>
+              <div>
+                <span class="h4"><%= challenge.statuses.count %></span><br />
+                Status
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
   <% end %>
+  </div>
 <% end %>
 
-<h2>Challenges auxquels vous participez</h2>
-<% if @user.enrollments.count == 0 %>
-  <p>Vous participez à aucun challenge. Trouvez-en un sur la <%= link_to "liste des challenges", categories_path %></p>
-<% else %>
+<h2 class="mt-4">Challenges auxquels vous participez</h2>
+
+<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-2 flex-wrap d-flex align-items-stretch">
   <% @user.enrollments.each do |enrollment| %>
-    <p>
-    <%= link_to challenge_path(enrollment.challenge.slug) do %>
-      <%= enrollment.challenge.title %> - <%= enrollment.challenge.subtitle %>
-    <% end %>
-    (<%= enrollment.streaks %> jours)
-    </p>
+    <div class="col">
+      <div class="card border border-1">
+        <div class="card-header px-4 py-3">
+          <%= link_to challenge_path(enrollment.challenge.slug), :class => "link-dark h4" do %>
+            <%= enrollment.challenge.title %>
+          <% end %>
+          <p class="text-secondary pt-2">
+          par <%= link_to enrollment.challenge.user.username, profile_path(enrollment.challenge.user.username) %>
+          </p>
+        </div>
+        <div class="card-body text-center">
+          <p><%= enrollment.challenge.subtitle %></p>
+          <div class="d-flex justify-content-around">
+            <div>
+              <span class="h4"><%= enrollment.challenge.enrollments.count %></span><br />
+              Participants
+            </div>
+            <div>
+              <span class="h4"><%= enrollment.challenge.statuses.count %></span><br />
+              Status
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-<% end %>
+</div>
