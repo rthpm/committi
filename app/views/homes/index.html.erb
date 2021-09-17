@@ -10,17 +10,30 @@
 <h1 class="mb-4">Les derniers challenges</h1>
 <% unless @challenges.nil? %>
 
-  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6 g-2 flex-wrap d-flex align-items-stretch">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-2 flex-wrap d-flex align-items-stretch">
     <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
       <div class="col">
         <div class="card border border-1">
-          <div class="card-body">
-            <p>
-              <%= link_to challenge_path(challenge.slug) do %>
-                <%= challenge.title %> - <%= challenge.subtitle %>
-              <% end %>
-              lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
+          <div class="card-header px-4 py-3">
+            <%= link_to challenge_path(challenge.slug), :class => "link-dark h4" do %>
+              <%= challenge.title %> 
+            <% end %>
+            <p class="text-secondary pt-2">
+            par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
             </p>
+          </div>
+          <div class="card-body text-center">
+            <p><%= challenge.subtitle %></p>
+            <div class="d-flex justify-content-around">
+              <div>
+                <span class="h4"><%= challenge.enrollments.count %></span><br />
+                Participants
+              </div>
+              <div>
+                <span class="h5"><%= challenge.statuses.count %></span><br />
+                Status
+              </div>
+            </div>
           </div>
         </div>
       </div>
