@@ -18,6 +18,8 @@ gem 'devise-i18n'
 gem 'strong_password', '~> 0.0.9'
 gem 'aws-sdk-s3', '~> 1' # We use Backblaze’s S3 API
 gem 'stripe'
+gem 'active_storage_validations'
+gem 'mini_magick', '>= 4.9.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
