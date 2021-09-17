@@ -10,10 +10,10 @@
           Posté sur <%= link_to status.challenge.title, challenge_path(status.challenge.slug) %>,
           il y a <%= time_ago_in_words status.created_at %>
         </div>
-        <div class="card-body p-4 status">
+        <div class="pt-4 px-4 status">
           <%= simple_format(status.content) %>
           <% unless status.image.attachment.nil? %>
-            <%= image_tag status.image, :class => "card-img border border-2 mb-3" %>
+            <%= image_tag status.image, :class => "card-img border border-2" %>
           <% end %>
         </div>
 
