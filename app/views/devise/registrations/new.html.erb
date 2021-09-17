@@ -1,18 +1,17 @@
-<div class="register-photo mt-5">
+<%= form_with model: @user, url: user_registration_path, local: true do |form| %>
+  <%=  render 'devise/shared/error_messages', model: form.object %>
+  <div class="register-photo mt-5">
     <div class="form-container" id="form-container-registration">
-        <div class="image-holder"></div>
-          <div class="m-5 mx-auto">
-            <h2 class="mt-2 mb-5 text-center" style="color: #dd750a"><strong>Créer un compte</strong></h2>
-             <%= form_with model: @user, url: user_registration_path, local: true do |form| %>
-              <%=  render 'devise/shared/error_messages', model: form.object %>
-              <%= form.text_field :username, :placeholder => 'Votre pseudo', :class => 'form-control mb-3' %>
-              <%= form.text_field :email, :placeholder => 'Email', :class => 'form-control mb-3' %>
-              <%= form.password_field :password, :placeholder => 'Mot de passe', :class => 'form-control mb-3'%>
-              <%= form.password_field :password, :placeholder => 'Confirmation Mot de passe', :class => 'form-control mb-3' %>
-              <%= form.submit "S'inscrire", :class => "btn btn-primary", :id => "btn-formulary" %>
-            <% end %>
-          </div>
+      <div class="image-holder"></div>
+        <div class="m-5 mx-auto">
+          <h2 class="mt-2 mb-5 text-center" style="color: #dd750a"><strong>Créer un compte</strong></h2>
+          <%= form.text_field :username, :placeholder => 'Votre pseudo', :class => 'form-control mb-3' %>
+          <%= form.text_field :email, :placeholder => 'Email', :class => 'form-control mb-3' %>
+          <%= form.password_field :password, :placeholder => 'Mot de passe', :class => 'form-control mb-3'%>
+          <%= form.password_field :password, :placeholder => 'Confirmation Mot de passe', :class => 'form-control mb-3' %>
+          <%= form.submit "S'inscrire", :class => "btn btn-primary", :id => "btn-formulary" %>
+        </div>
+      </div>
     </div>
-</div>
-
-
+  </div>
+<% end %>

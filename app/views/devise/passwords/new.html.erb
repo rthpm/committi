@@ -1,10 +1,10 @@
+<%= render "devise/shared/error_messages", resource: resource %>
 <div class="register-photo">
     <div class="form-container" id="form-container-registration">
         <div class="image-holder"></div>
           <div class="m-5 mx-auto">
             <h2 class="mt-2 mb-5 text-center" style="color: #dd750a"><strong>Oubli mot de passe </strong></h2>
               <%= form_with model: resource, scope: resource_name, url: password_path(resource_name), local: true do |form| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
               <div class="field">
                 <%= form.label :email %><br />
                 <%= form.email_field :email, :autofocus => 'true', :autocomplete => 'email', :class => 'form-control mb-3'  %>
