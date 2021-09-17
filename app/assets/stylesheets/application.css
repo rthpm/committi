@@ -148,3 +148,12 @@ a.btn.btn-outline.btn-primary:hover {
   border-color: #dd750a;
   background-color: #dd750a;
 }
+
+.img-upload > input {
+  display: none;
+}
+
+.lg-ico {
+  display: contents;
+  font-size: 1.3rem;
+}

@@ -13,7 +13,7 @@
         <div class="pt-4 px-4 status">
           <%= simple_format(status.content) %>
           <% unless status.image.attachment.nil? %>
-            <%= image_tag status.image, :class => "card-img border border-2" %>
+              <%= image_tag status.image, :class => "card-img border border-2" %>
           <% end %>
         </div>
 

@@ -3,7 +3,12 @@
     <div class="my-3">
       <%= form.text_area :content, :rows => "3", :class => "form-control mb-3" %>
      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-       <%= form.file_field :image, :class => "form-control" %>
+       <div class="img-upload">
+         <%= form.label :image, :class => "btn btn-link nodecoration text-black" do %>
+           <i class="bi bi-file-earmark-image lg-ico"></i>
+         <% end %>
+          <%= form.file_field :image, :class => "form-control" %>
+        </div>
        <%= form.submit "Envoyer", :class => "btn btn-primary btn-right" %>
       </div>
     </div>

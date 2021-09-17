@@ -37,11 +37,11 @@
           <% if has_rights? %>
             <div class="btn-group dropup">
               <button type="button" class="btn btn-link dropdown-toggle nodecoration text-black emptydrop" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-box-arrow-in-up"></i>
+                <i class="bi bi-box-arrow-in-up lg-ico"></i>
               </button>
               <ul class="dropdown-menu">
-                <li><%= link_to "Supprimer", challenge_status_path(@challenge.slug, status), data: { confirm: "Are you sure?" }, :class => "text-danger", method: :delete %></li>
-                <li><%= link_to "Modifier", edit_challenge_status_path(@challenge.slug, status), :class => "text-black" %></li>
+                <li><%= link_to "Supprimer", challenge_status_path(@challenge.slug, status), data: { confirm: "Are you sure?" }, :class => "text-danger dropdown-item", method: :delete %></li>
+                <li><%= link_to "Modifier", edit_challenge_status_path(@challenge.slug, status), :class => "text-black dropdown-item" %></li>
               </ul>
             </div>
           <% else %>
