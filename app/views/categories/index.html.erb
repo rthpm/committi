@@ -9,7 +9,7 @@
       </li>
       <% @categories.each do |category| %>
       <li class="nav-item">
-        <%= link_to category.name, category_path(category.slug), :class => "nav-link" %>
+        <%= link_to category.name, category_path(category.slug), :class => "nav-link link-dark" %>
       </li>
       <% end %>
     </ul>

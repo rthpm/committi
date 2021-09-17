@@ -5,11 +5,15 @@
   <div class="container pb-2">
     <ul class="d-flex justify-content-around nav">
       <li class="nav-item d-flex justify-content-between">
-        <%= link_to "Tous", categories_path, :class => "nav-link active" %>
+        <%= link_to "Tous", categories_path, :class => "nav-link link-dark" %>
       </li>
       <% @categories.each do |category| %>
       <li class="nav-item">
-        <%= link_to category.name, category_path(category.slug), :class => "nav-link" %>
+        <% if category.slug == params[:slug] %>
+        <%= link_to category.name, category_path(category.slug), :class => "nav-link active" %>
+        <% else %>
+          <%= link_to category.name, category_path(category.slug), :class => "nav-link link-dark" %>
+        <% end %>
       </li>
       <% end %>
     </ul>

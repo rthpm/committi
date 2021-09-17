@@ -157,3 +157,7 @@ a.btn.btn-outline.btn-primary:hover {
   display: contents;
   font-size: 1.3rem;
 }
+
+a.active {
+  font-weight: bold;
+}
