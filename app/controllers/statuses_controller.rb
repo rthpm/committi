@@ -55,6 +55,6 @@ class StatusesController < ApplicationController
 private
 
   def status_params
-    params.require(:status).permit(:content, :user, :challenge)
+    params.require(:status).permit(:content, :user, :challenge, :image)
   end
 end

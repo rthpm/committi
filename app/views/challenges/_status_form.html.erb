@@ -3,6 +3,7 @@
     <div class="my-3">
       <%= form.text_area :content, :rows => "3", :class => "form-control mb-3" %>
      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+       <%= form.file_field :image, :class => "form-control" %>
        <%= form.submit "Envoyer", :class => "btn btn-primary btn-right" %>
       </div>
     </div>

@@ -44,3 +44,13 @@ Use the steps below for a local install.
     ```sh
     ; rails s
     ```
+- You have to set some environment variables to take advantage of the email and
+    storage services:
+    - Sendgrid (mailing) related variables (self-explanatory):
+      - `SENDGRID_LOGIN`
+      - `SENDGRID_PWD`
+    - Backblaze (or any S3 compatible API) related variables:
+      - `B2_NAME`: The bucket name
+      - `B2_KEY`: The bucket key
+      - `B2_TOKEN`: Your account token
+      - `B2_ENDPT`: The region/server endpoint

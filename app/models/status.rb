@@ -4,6 +4,7 @@ class Status < ApplicationRecord
   belongs_to :challenge
   has_many :likes, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_one_attached :image
 
   # Validation rules
   validates :content,
