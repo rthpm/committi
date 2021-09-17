@@ -1,4 +1,4 @@
-class HomesController < ApplicationController
+class StaticController < ApplicationController
   def index
     @challenges = Challenge.all
   end

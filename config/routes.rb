@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :homes
+  resources :static
   resources :challenges, :path => 'c', :param => :slug, :except => [:index] do
     resources :enrollments, only: [:create, :destroy]
     resources :statuses, :path => 's', :except => [:show, :index] do
@@ -27,5 +27,5 @@ Rails.application.routes.draw do
   authenticated :user do
     root 'users#homepage', as: :authenticated_root
   end
-  root 'homes#index'
+  root 'static#index'
 end
