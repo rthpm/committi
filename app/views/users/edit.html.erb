@@ -1,4 +1,4 @@
-<h1 class="mb-5 mt-2">Changer vos informations de compte</h1>
+<h1 class="my-5">Changer vos informations de compte</h1>
 <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded">
   <%= form_for(@user, :url => { :action => "update_email_and_password" } ) do |form| %>
     <%= form.label :email %><br />
@@ -7,7 +7,7 @@
     <%= form.password_field :password, :autocomplete => "off", :class => 'form-control mb-3 card-header'  %>
     <%= form.label :password_confirmation %>
     <%= form.password_field :password_confirmation, :class => 'form-control mb-3 card-header' %>
-    <%= form.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= form.label :current_password, :class => "mandatory" %> <i>(pour confirmer vos changements)</i><br />
     <%= form.password_field :current_password, :class => 'form-control mb-3 card-header' %>
     <%= form.submit :class => 'btn btn-primary mb-2 action_container', :id => 'btn-formulary' %>
   <% end %>
