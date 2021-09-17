@@ -1,13 +1,65 @@
-<div class="pageheader mb-5">
-  <header class="text-center text-white masthead" id="bg-index-committi">
+<div class="pageheader border-0">
+  <header class="text-center text-white" id="bg-index-committi">
     <div class="container">
-      <p class="header-p h2 p-5">Vous avez toujours voulu vous dépasser avec des défis? Venez créer les vôtres en rejoignant la communauté de Committi</p>
-      <%= link_to "S'inscrire", new_user_registration_path, :class => "btn btn-primary", :id => "btn", :type => "button" %>
+      <h1 class="text-white">committi</h1>
+      <p>Un réseau social ou l’on partage les défis qu’on se donne</p>
     </div>
   </header>
 </div>
+<div class="pageheader bg-grey">
+  <div class="container py-2">
+    <div class="nav-list text-center">
+      <span class="text-muted">Explorer&nbsp;:</span>
+      <%= link_to "Tous", categories_path, :class => "link-dark" %>
+      <% @categories.each do |category| %>
+        <%= link_to category.name, category_path(category.slug), :class => "link-dark" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<h1 class="mb-4">Les derniers challenges</h1>
+<div class="pageheader bg-white border-0 py-5">
+  <div class="container">
+    <div class="row row-lg-2">
+      <div class="col">
+        <%= image_tag(asset_path("roller-skating.svg"), :class => "img-fluid illustration") %>
+      </div>
+      <div class="col align-self-center">
+        <h2 class="h3">Des challenges&nbsp;?</h2>
+        <p>Un challenge est une promesse que vous vous faites en public de réaliser un petit quelque chose chaque jour pour vous aider à vous surpasser.</p>
+        <p><i>committi</i> vous accompagne pour trouver d’autre challengers qui partagent votre passion et qui aimeraient aussi partager leur expérience&nbsp;!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pageheader border-0 py-5">
+  <div class="container w-25">
+    <p>Quand vous rejoignez un challenge, vous avez un compteur qui se crééra et qui augmentera pour chaque jour ou vous vous engagez.</p>
+    <p>Gare aux manquements&nbsp;! Un seul jour manqué et votre <b>série</b> retombe à zéro sur le challenge. Essayez d’aller le plus loin possible sans retomber à zéro&nbsp;!</p>
+  </div>
+</div>
+
+<div class="pageheader bg-white border-0 py-5">
+  <div class="container">
+    <div class="row row-lg-2">
+      <div class="col">
+        <h2 class="h3">Se lancer</h2>
+        <p>Il est très facile de créer un nouveau challenge. Trouvez un titre, une petite description, et lancez-vous&nbsp;! Parlez-en à vos amis ou laissez les autres utilisateurs s’embarquer dans l’aventure. Pas envie de vous embêter avec ça&nbsp;? Explorez les autres défis pour trouvez chaussure à vos pieds.</p>
+        <p><i>committi</i> vous accompagne pour trouver d’autre challengers qui partagent votre passion et qui aimeraient aussi partager leur expérience&nbsp;!</p>
+      </div>
+      <div class="col">
+        <h2 class="h3">Qu’attendez-vous&nbsp;?</h2>
+        <p>Rejoignez-nous&nbsp;, l’inscription ne prend que quelques secondes et vous serez fin prêt pour relever vos plus grands défis.</p>
+        <div class="text-center pt-5">
+          <%= link_to "S'inscrire", new_user_registration_path, :class => "btn btn-primary btn-outline btn-lg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="h1 my-5">Les derniers challenges</h2>
 <% unless @challenges.nil? %>
 
   <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-2 flex-wrap d-flex align-items-stretch">

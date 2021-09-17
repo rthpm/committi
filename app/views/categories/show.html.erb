@@ -3,45 +3,17 @@
     <h1 class="h3">Les Challenges</h1>
   </div>
   <div class="container pb-2">
-    <ul class="d-flex justify-content-around nav">
-      <li class="nav-item d-flex justify-content-between">
-        <%= link_to "Tous", categories_path, :class => "nav-link link-dark" %>
-      </li>
+    <div class="nav-list text-center">
+      <%= link_to "Tous", categories_path, :class => "link-dark" %>
       <% @categories.each do |category| %>
-      <li class="nav-item">
         <% if category.slug == params[:slug] %>
-        <%= link_to category.name, category_path(category.slug), :class => "nav-link active" %>
+        <%= link_to category.name, category_path(category.slug), :class => "active" %>
         <% else %>
-          <%= link_to category.name, category_path(category.slug), :class => "nav-link link-dark" %>
+          <%= link_to category.name, category_path(category.slug), :class => "link-dark" %>
         <% end %>
-      </li>
       <% end %>
-    </ul>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class= "mb-5 mt-2 col-12 text-center">
-      <div class="container"> 
-        <div class="row row-cols-3 g-2 flex-wrap">
-          <% @challenges.order('created_at').reverse.each do |challenge| %>
-            <div class="card border border-1">
-              <div class="card-body">
-                <div class="col-12">
-                  <p>
-                    <%= link_to challenge_path(challenge.slug) do %>
-                    <%= challenge.title %> - <%= challenge.subtitle %>
-                    <% end %>
-                    lancé par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
-                  </p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
+<%= render "layouts/challenges_cards" %>
