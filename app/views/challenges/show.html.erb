@@ -31,5 +31,8 @@
         <%= image_tag @user.avatar_url(@user, size: "80x80!"), :class => "avatar me-3" %>
         <%= link_to @user.username, @user_path %><br />
       </div>
-      </div>
+      <% if has_rights? %>
+        <%= link_to "Modifier ce challenge", edit_challenge_path(@challenge), :class => "btn btn-primary" %>
+      <% end %>
+    </div>
 </div>
