@@ -112,3 +112,27 @@ a:hover {
 .breakword {
   word-wrap: break-word;
 }
+
+input.btn.btn-primary {
+  color: white;
+  border-color: #dd750a;
+  background-color: #dd750a;
+}
+
+input.btn.btn-primary:hover {
+  color: #dd750a;
+  border-color: #dd750a;
+  background-color: transparent;
+}
+
+a.btn.btn-outline.btn-primary {
+  color: #dd750a;
+  border-color: #dd750a;
+  background-color: transparent;
+}
+
+a.btn.btn-outline.btn-primary:hover {
+  color: white;
+  border-color: #dd750a;
+  background-color: #dd750a;
+}
