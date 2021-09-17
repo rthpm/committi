@@ -1,9 +1,17 @@
-<ul>
-<% if @user.matching?(current_user, @user) %>
-  <li><%= link_to "Vos challenges", authenticated_root_path %></li>
-<% end %>
-<li><%= link_to "Profil", profile_path(@user.username) %></li>
-<% if @user.matching?(current_user, @user) %>
-<li><%= link_to "Éditer votre profil", profile_user_path %></li>
-<% end %>
-</ul>
+<div class="pageheader bg-white px-5 pt-5 mb-5">
+  <div class="container mb-5">
+    <h1 class="h3"><%= @user.username %></h1>
+    <p class="text-secondary">Membre depuis <%= time_ago_in_words @user.created_at %></p>
+  </div>
+  <div class="container pb-2">
+    <ul class="d-flex justify-content-around nav">
+      <% if @user.matching?(current_user, @user) %>
+        <li><%= link_to "Vos challenges", authenticated_root_path %></li>
+      <% end %>
+      <li><%= link_to "Profil", profile_path(@user.username) %></li>
+      <% if @user.matching?(current_user, @user) %>
+      <li><%= link_to "Éditer votre profil", profile_user_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
