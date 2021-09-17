@@ -67,11 +67,11 @@
             </p>
           <% end %>
           <% if status.comments.count > 0 %>
-            <% status.comments.order('created_at').reverse.each do |comment| %>
+            <% status.comments.order('created_at').each do |comment| %>
               <hr />
               <div class="row">
                 <div class="col-2 text-center">
-                  <%= image_tag @user.avatar_url(comment.user, size: "50x50!"), :class => "avatar mt-2" %>
+                  <%= image_tag @user.avatar_url(comment.user, size: "80x80!"), :class => "avatar mt-2" %>
                 </div>
                 <div class="col">
                   <p class="text-secondary">
