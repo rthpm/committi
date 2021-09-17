@@ -56,7 +56,7 @@
 
         <div class="collapse" id="c<%= status.id %>">
           <% if user_signed_in? %>
-            <div class="my-3">
+            <div class="my-3 px-4">
               <%= form_with(model: [status.challenge, status, @comment], local: true) do |form| %>
                 <%= form.text_area :content, :class => "form-control mb-3" %>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -65,14 +65,14 @@
               <% end %>
             </div>
           <% else %>
-            <p class="my-3">
+            <p class="my-3 px-4 pb-4">
               <%= link_to "Connectez-vous", new_user_session_path %> pour envoyer un commentaire
             </p>
           <% end %>
           <% if status.comments.count > 0 %>
             <% status.comments.order('created_at').each do |comment| %>
               <hr />
-              <div class="row">
+              <div class="row px-4 pb-4">
                 <div class="col-2 text-center">
                   <%= image_tag @user.avatar_url(comment.user, size: "80x80!"), :class => "avatar mt-2" %>
                 </div>
