@@ -15,10 +15,9 @@
           <% unless status.image.attachment.nil? %>
             <%= image_tag status.image, :class => "card-img border border-2 mb-3" %>
           <% end %>
-          <p class="text-secondary"> Il y a <%= time_ago_in_words status.created_at %></p>
         </div>
 
-        <div class="d-flex justify-content-around mt-4">
+        <div class="d-flex justify-content-around mt-4 pb-4">
 
           <% if user_signed_in? && liked?(status, current_user) %>
             <%= link_to challenge_status_like_path(status.challenge, status, Like.find_by(user: current_user, status: status)), method: "delete", :class => "btn btn-link text-danger nodecoration" do %>
