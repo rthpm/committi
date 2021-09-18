@@ -13,8 +13,8 @@ module ApplicationHelper
     status.order(created_at: :desc).first.created_at.to_date != Time.now.to_date
   end
 
-  def has_rights?
+  def has_rights?(user = nil)
     return false unless user_signed_in?
-    return true if current_user.is_admin || current_user == @user
+    return true if current_user.is_admin || current_user == @user || current_user == user
   end
 end
