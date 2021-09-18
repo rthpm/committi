@@ -7,7 +7,7 @@ task :reset_streaks => :environment do
     challenge = enrollment.challenge
     interval = challenge.interval
     next_date = challenge.next_date
-    unless status.empty?
+    unless user.statuses.empty?
       if interval == "daily" && (status.created_at.utc.to_date < Time.now.utc.to_date) 
         streaks = 0
       end
