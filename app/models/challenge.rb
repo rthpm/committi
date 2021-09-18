@@ -19,6 +19,19 @@ class Challenge < ApplicationRecord
   validates :description,
             :length => { :maximum => 100_000 }
 
+  VALID_INTERVAL = ["daily", "weekly", "monthly"].freeze
+  TIME_REQUIRED = ["weekly", "monthly"].freeze
+  TIMELY_FREE = ["daily"].freeze
+
+  validates_each :interval do |record, attr, value|
+    unless VALID_INTERVAL.include?(value.to_s.downcase)
+      record.errors.add(attr, "is not permitted")
+    end
+  end
+
+  validates :next_date, presence: { :if => lambda { TIME_REQUIRED.include?(self.interval) } }
+  validates :next_date, absence: { :if => lambda { TIMELY_FREE.include?(self.interval) } }
+
   # Slug assigning
   after_create :update_slug
   before_update :assign_slug

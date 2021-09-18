@@ -1,4 +1,4 @@
-<div class="d-flex card mb-3 shadow-lg p-3 mb-5 bg-body rounded">
+<div class="d-flex card mb-3 shadow-lg p-3 my-5 bg-body rounded">
 <h1 class="mb-5 mt-2">Créer un challenge</h1>
 <%= form_with url: challenges_path, local: true do |form| %>
   <%= form.label 'Titre du challenge' %>
@@ -9,5 +9,25 @@
   <%= form.collection_select :category, @categories, :slug, :name, { include_blank: false },  { class: "form-control form-select mb-3" } %>
   <%= form.label 'Résumé du challenge' %>
   <%= form.text_area :description, :class => 'form-control mb-3 card-header' %>
+
+  <%= form.label 'Intervalle' %>
+  <div class="form-check mb-3">
+    <% Challenge::TIMELY_FREE.each do |interval| %>
+      <%= form.radio_button :interval, interval, :class => "form-check-label", "data-bs-toggle" =>"collapse", "data-bs-target" => ".date-selector.show" %>
+      <%= t(interval) %><br />
+    <% end %>
+    <% Challenge::TIME_REQUIRED.each do |interval| %>
+      <%= form.radio_button :interval, interval, :class => "form-check-label", "data-bs-toggle" =>"collapse", "data-bs-target" => ".date-selector:not(.show)" %>
+      <%= t(interval) %><br />
+    <% end %>
+  </div>
+
+  <div class="collapse date-selector">
+    <div class="mb-3">
+      <%= form.label 'Prochaine échéance' %>
+      <%= form.date_field :next_date, min: Date.tomorrow, :class => "form-control" %>
+    </div>
+  </div>
+
   <%= form.submit :placeholder => 'Enregistrer', :class => 'btn btn-primary mb-2', :id => 'btn-formulary' %>
 <% end %>

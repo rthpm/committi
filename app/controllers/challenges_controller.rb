@@ -25,7 +25,9 @@ class ChallengesController < ApplicationController
                                   title: params[:title],
                                   subtitle: params[:subtitle],
                                   description: params[:description],
-                                  category: @category)
+                                  category: @category,
+                                  interval: params[:interval],
+                                  next_date: params[:next_date])
     if @challenge.save
       flash[:notice] = 'Nouveau challenge créé'
       redirect_to challenge_path(@challenge.slug)
