@@ -27,6 +27,7 @@ private
     e = Enrollment.find_by(user: self.user, challenge: self.challenge)
     if self.created_at.to_date == Time.now.to_date && self == Status.all.where(user: self.user, 
                                                                                challenge: self.challenge).last
+      e.decrement!(:best_streak) if e.best_streak == e.streaks
       e.decrement!(:streaks) 
     end
   end
@@ -34,5 +35,7 @@ private
   def increment_streaks
     e = Enrollment.find_by(user: self.user, challenge: self.challenge)
     e.increment!(:streaks) unless e.nil? # To get the seed to work
+    e.best_streak = e.streaks if e.best_streak < e.streaks
+    e.save
   end
 end

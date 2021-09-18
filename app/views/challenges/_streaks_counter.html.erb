@@ -2,6 +2,7 @@
   <% if @enrollment.streaks > 0 || @challenge.statuses.where(user: @user).count %>
     <p><b>
       Séries&nbsp;: <%= @enrollment.streaks %>
+      Meilleur&nbsp;: <%= @enrollment.best_streak %>
       Status&nbsp;: <%= @challenge.statuses.where(user: @user).count %>
     </b></p>
   <% elsif @enrollment.streaks = 0 %>
