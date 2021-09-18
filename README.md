@@ -55,4 +55,5 @@ Use the steps below for a local install.
       - `B2_TOKEN`: Your account token
       - `B2_ENDPT`: The region/server endpoint
 - A rake task `reset_streaks` should be called daily by `cron` or any schedulder
-    to reset the streak value of users.
+    to reset the streak value of users. Likewise, there’s a
+    `advance_challenge_date` task that is pretty self-explanatory.

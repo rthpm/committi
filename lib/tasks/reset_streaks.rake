@@ -8,7 +8,6 @@ task :reset_streaks => :environment do
     interval = challenge.interval
     next_date = challenge.next_date
 
-    # Dailies
     if interval == "daily" && (status.created_at.utc.to_date < Time.now.utc.to_date) 
       streaks = 0
     end
