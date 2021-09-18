@@ -1,16 +1,16 @@
 <div class="d-flex card mb-3 shadow-lg p-3 my-5 bg-body rounded">
 <h1 class="mb-5 mt-2">Créer un challenge</h1>
 <%= form_with url: challenges_path, local: true do |form| %>
-  <%= form.label 'Titre du challenge' %>
+  <%= form.label 'Titre du challenge', :class => "mandatory" %>
   <%= form.text_field :title, :class => 'form-control mb-3 card-header' %>
   <%= form.label 'Sous-titre du challenge', :class => 'mandatory'%>
   <%= form.text_field :subtitle, :placeholder => 'Faites une courte description', :class => 'form-control mb-3 card-header' %>
-  <%= form.label 'Catégorie' %>
+  <%= form.label 'Catégorie', :class => "mandatory" %>
   <%= form.collection_select :category, @categories, :slug, :name, { include_blank: false },  { class: "form-control form-select mb-3" } %>
-  <%= form.label 'Résumé du challenge' %>
+  <%= form.label 'Description du challenge' %>
   <%= form.text_area :description, :class => 'form-control mb-3 card-header' %>
 
-  <%= form.label 'Intervalle' %>
+  <%= form.label 'Intervalle', :class => "mandatory" %>
   <div class="form-check mb-3">
     <% Challenge::TIMELY_FREE.each do |interval| %>
       <%= form.radio_button :interval, interval, :class => "form-check-label", "data-bs-toggle" =>"collapse", "data-bs-target" => ".date-selector.show" %>
@@ -29,5 +29,5 @@
     </div>
   </div>
 
-  <%= form.submit :placeholder => 'Enregistrer', :class => 'btn btn-primary mb-2', :id => 'btn-formulary' %>
+  <%= form.submit 'Enregistrer', :class => 'btn btn-primary mb-2', :id => 'btn-formulary' %>
 <% end %>

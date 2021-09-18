@@ -10,7 +10,9 @@ module ApplicationHelper
   def can_post?(challenge, user)
     status = Status.where(user: user, challenge: challenge)
     return true unless status.exists?
-    status.order(created_at: :desc).first.created_at.to_date != Time.now.to_date
+    return true if challenge.interval == "daily" && Time.now.utc.to_date != status.last.created_at.utc.to_date
+    return true if challenge.interval == "weekly" && (challenge.next_date - status.last.created_at.utc.to_date).to_i > 7
+    return true if challenge.interval == "monthly" && (challenge.next_date - status.last.created_at.utc.to_date).to_i > 30
   end
 
   def has_rights?(user = nil)
