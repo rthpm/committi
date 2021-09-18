@@ -1,10 +1,12 @@
 <% if user_signed_in? && enrolled?(@challenge, current_user) %>
   <% if @enrollment.streaks > 0 || @challenge.statuses.where(user: @user).count %>
-    <p><b>
-      Séries&nbsp;: <%= @enrollment.streaks %>
-      Meilleur&nbsp;: <%= @enrollment.best_streak %>
-      Status&nbsp;: <%= @challenge.statuses.where(user: @user).count %>
-    </b></p>
+    <p><b>Statistiques:</b><br />
+      <small>
+        <span>Status&nbsp;:&nbsp;<%= @challenge.statuses.where(user: @user).count %></span><br />
+        <span>Séries&nbsp;:&nbsp;<%= @enrollment.streaks %></span><br />
+        <span>Meilleur&nbsp;:&nbsp;<%= @enrollment.best_streak %></span>
+      </small>
+    </p>
   <% elsif @enrollment.streaks = 0 %>
     <p>Vous n’avez aucune progression sur ce challenge.</p>
   <% end %>

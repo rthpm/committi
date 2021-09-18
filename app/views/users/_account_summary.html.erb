@@ -37,7 +37,8 @@
         <div class="card-header px-4 py-3">
           <%= link_to challenge_path(challenge.slug), :class => "link-dark h4" do %>
             <%= challenge.title %>
-          <% end %>
+          <% end %><br />
+          <span class="text-muted">Challenge <%= t(challenge.interval) %></span>
             <p class="pt-2">
             <%= link_to "Modifier", edit_challenge_path(challenge.slug), :class => "link-danger" %>
             </p>
@@ -45,6 +46,7 @@
           <div class="card-body text-center">
             <p><%= challenge.subtitle %></p>
             <div class="d-flex justify-content-around">
+
               <div>
                 <span class="h4"><%= challenge.enrollments.count %></span><br />
                 Participants
@@ -72,12 +74,13 @@
             <%= enrollment.challenge.title %>
           <% end %>
           <p class="text-secondary pt-2">
-          par <%= link_to enrollment.challenge.user.username, profile_path(enrollment.challenge.user.username) %>
+            Challenge <%= t(enrollment.challenge.interval) %>
+            par <%= link_to enrollment.challenge.user.username, profile_path(enrollment.challenge.user.username) %>
           </p>
         </div>
         <div class="card-body text-center">
           <p><%= enrollment.challenge.subtitle %></p>
-          <div class="d-flex justify-content-around">
+          <div class="d-flex justify-content-around flex-wrap">
             <div>
               <span class="h4"><%= enrollment.challenge.enrollments.count %></span><br />
               Participants
