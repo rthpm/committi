@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
   include ApplicationHelper
+  include ChallengesHelper
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :create, :edit, :update]
   before_action :authenticate_user!, only: [:new, :edit]
@@ -12,6 +13,11 @@ class ChallengesController < ApplicationController
     @comment = Comment.new
     if signed_in?
       @enrollment = current_user.enrollments.find_by(challenge: @challenge)
+    end
+    if @challenge.interval == "daily"
+      @countdown = countdown_string
+    else
+      @countdown = countdown_string(@challenge.next_date)
     end
   end
 

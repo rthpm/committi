@@ -27,6 +27,15 @@
     <%= render "feed.html" %>
   </div>
   <div class="col-3">
+    <div class ="mb-3">
+    <span class="h5">Échéance</span><br />
+    <% if @challenge.interval == "daily" %>
+      <%= distance_of_time_in_words_to_now Time.now.utc.tomorrow.beginning_of_day %>
+    <% else %>
+      <%= distance_of_time_in_words_to_now @challenge.next_date.to_time.utc %>
+    <% end %>
+
+    </div>
     <%= render "streaks_counter.html" %>
     <%= render "enrollment_button.html" %>
       <span class="h5">Challenge lancé par</span>
