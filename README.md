@@ -54,3 +54,5 @@ Use the steps below for a local install.
       - `B2_KEY`: The bucket key
       - `B2_TOKEN`: Your account token
       - `B2_ENDPT`: The region/server endpoint
+- A rake task `reset_streaks` should be called daily by `cron` or any schedulder
+    to reset the streak value of users.
