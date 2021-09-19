@@ -4,7 +4,7 @@
       <%= image_tag @user.avatar_url(status.user, size: "80x80!"), :class => "avatar" %>
       <p>
         <%= link_to status.user.username, profile_path(status.user.username), :class => "text-black breakword" %>
-        <% if @user.is_premium? %>
+        <% if status.user.is_premium? %>
           <%= link_to premium_path, :class => "link-primary" do %>
             <i class="bi bi-check-circle small"></i>
           <% end %>
