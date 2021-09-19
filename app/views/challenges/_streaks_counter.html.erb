@@ -1,7 +1,7 @@
 <% if user_signed_in? && enrolled?(@challenge, current_user) %>
   <% if @enrollment.streaks > 0 || @challenge.statuses.where(user: @user).count %>
     <p><span class="h5">Statistiques</span><br />
-      <span>Status&nbsp;:&nbsp;<%= @challenge.statuses.where(user: @user).count %></span><br />
+      <span>Status&nbsp;:&nbsp;<%= @challenge.statuses.where(user: current_user).count %></span><br />
       <span>Séries&nbsp;:&nbsp;<%= @enrollment.streaks %></span><br />
       <span>Meilleur&nbsp;:&nbsp;<%= @enrollment.best_streak %></span>
     </p>
