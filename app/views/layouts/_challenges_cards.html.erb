@@ -7,6 +7,7 @@
               <%= challenge.title %> 
             <% end %>
             <p class="text-secondary pt-2">
+            Challenge <%= t(challenge.interval) %><br />
             par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
             <% if challenge.user.is_premium? %>
               <%= link_to premium_path, :class => "link-primary" do %>
