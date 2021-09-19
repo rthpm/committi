@@ -72,6 +72,11 @@
             <% end %>
             <p class="text-secondary pt-2">
             par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>
+            <% if challenge.user.is_premium? %>
+              <%= link_to premium_path, :class => "link-primary" do %>
+                <i class="bi bi-check-circle small"></i>
+              <% end %>
+            <% end %>
             </p>
           </div>
           <div class="card-body text-center">

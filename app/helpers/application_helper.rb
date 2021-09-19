@@ -19,4 +19,9 @@ module ApplicationHelper
     return false unless user_signed_in?
     return true if current_user.is_admin || current_user == @user || current_user == user
   end
+
+  def premiumize_user
+    current_user.is_premium = true
+    current_user.save
+  end
 end

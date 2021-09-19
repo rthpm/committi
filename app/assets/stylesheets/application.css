@@ -149,6 +149,10 @@ a.btn.btn-outline.btn-primary:hover {
   background-color: #dd750a;
 }
 
+.link-primary {
+  color: #dd750a;
+}
+
 .img-upload > input {
   display: none;
 }

@@ -1,0 +1,20 @@
+<div class="pageheader bg-white px-5 pt-5 mb-5">
+  <div class="container mb-5">
+    <h1 class="h3">committi premium&nbsp;?</h1>
+    <p>committi est un réseau social gratuit, et il existe grâce à ses utilisateurs, grâce à vous&nbsp;!</p>
+    <p>Sans publicité, ni aucune magouille avec des annonceurs, nous avons tout de même besoin d’un coup de main de nos chers utilisateurs. C’est pour ça que nous avons mis en place la <i>tip-jar</i>. Vos dons à prix libre (min.&nbsp;1&nbsp;euro) seront utilisés pour l’hébergement du site web.</p>
+    <p>Merci à vous pour votre soutien&nbsp;!</p>
+  </div>
+</div>
+
+<div class="card p-5 border border-1">
+  <% if user_signed_in? %>
+    <%= form_with url: premium_create_path, local: true do |form| %>
+      <%= form.label 'Montant du tips' %>
+      <%= form.number_field :price, in: 1.0..20.0, step: 0.5, :class => "form-control mb-3" %>
+      <%= form.submit "Payer avec Stripe", :class => "btn btn-primary" %>
+    <% end %>
+  <% else %>
+    <p>Veuillez vous <%= link_to "connecter", new_user_session_path %> pour faire vos dons.</p>
+  <% end %>
+</div>

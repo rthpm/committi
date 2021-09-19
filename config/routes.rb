@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :static
   resources :challenges, :path => 'c', :param => :slug, :except => [:index] do
     resources :enrollments, only: [:create, :destroy]
     resources :statuses, :path => 's', :except => [:show, :index] do
@@ -11,9 +10,9 @@ Rails.application.routes.draw do
   # Not a typo
   resources :categories, :path => 'challenges', :param => :slug, :only => [:index, :show]
 
-  devise_for :user, :path => '', :path_names => { :sign_in => "login",
-                                                  :sign_out => "logout",
-                                                  :sign_up => "signup", }
+  devise_for :user, :path => '', :path_names => { :sign_in => 'login',
+                                                  :sign_out => 'logout',
+                                                  :sign_up => 'signup', }
 
   resource :user, :path => 'a', :only => [:edit, :profile] do
     collection do
@@ -28,4 +27,11 @@ Rails.application.routes.draw do
     root 'users#homepage', as: :authenticated_root
   end
   root 'static#index'
+
+  scope '/premium' do
+    get 'info' => 'premium#index', :as => 'premium'
+    post 'create' => 'premium#create', :as => 'premium_create'
+    get 'success' => 'premium#success', :as => 'premium_success'
+    get 'cancel' => 'premium#cancel', :as => 'premium_cancel'
+  end
 end

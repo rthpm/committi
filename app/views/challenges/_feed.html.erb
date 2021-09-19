@@ -2,7 +2,14 @@
   <div class="row">
     <div class="col-2 text-center mt-4">
       <%= image_tag @user.avatar_url(status.user, size: "80x80!"), :class => "avatar" %>
-      <p><%= link_to status.user.username, profile_path(status.user.username), :class => "text-black breakword" %></p>
+      <p>
+        <%= link_to status.user.username, profile_path(status.user.username), :class => "text-black breakword" %>
+        <% if @user.is_premium? %>
+          <%= link_to premium_path, :class => "link-primary" do %>
+            <i class="bi bi-check-circle small"></i>
+          <% end %>
+        <% end %>
+      </p>
     </div>
     <div class="col">
       <div class="card mb-3 shadow-lg p-4 mb-5 bg-body rounded">

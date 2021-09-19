@@ -37,7 +37,7 @@ class User < ApplicationRecord
   BANNED_USERNAMES = ["admin", "administrator", "contact", "fraud", "guest",
      "help", "hostmaster", "committi", "mailer-daemon", "moderator",
      "moderators", "nobody", "postmaster", "root", "security", "support",
-     "sysop", "webmaster", "enable", "new", "signup",].freeze
+     "sysop", "webmaster", "enable", "new", "signup", "premium",].freeze
 
   validates_each :username do |record, attr, value|
     if BANNED_USERNAMES.include?(value.to_s.downcase)
