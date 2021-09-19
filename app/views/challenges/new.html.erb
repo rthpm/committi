@@ -10,15 +10,19 @@
   <%= form.label 'Description du challenge' %>
   <%= form.text_area :description, :class => 'form-control mb-3 card-header' %>
 
-  <%= form.label 'Intervalle', :class => "mandatory" %>
-  <div class="form-check mb-3">
+  <div class="mb-3">
+    <%= form.label 'Intervalle', :class => "mandatory" %>
     <% Challenge::TIMELY_FREE.each do |interval| %>
-      <%= form.radio_button :interval, interval, :class => "form-check-label", "data-bs-toggle" =>"collapse", "data-bs-target" => ".date-selector.show" %>
-      <%= t(interval) %><br />
+      <div class="form-check">
+        <%= form.radio_button :interval, interval, :class => "form-check-input", "data-bs-toggle" =>"collapse", "data-bs-target" => ".date-selector.show" %>
+        <%= form.label t(interval).capitalize, :class => "form-check-label" %>
+      </div>
     <% end %>
     <% Challenge::TIME_REQUIRED.each do |interval| %>
-      <%= form.radio_button :interval, interval, :class => "form-check-label", "data-bs-toggle" =>"collapse", "data-bs-target" => ".date-selector:not(.show)" %>
-      <%= t(interval) %><br />
+      <div class="form-check">
+      <%= form.radio_button :interval, interval, :class => "form-check-input", "data-bs-toggle" =>"collapse", "data-bs-target" => ".date-selector:not(.show)" %>
+      <%= form.label t(interval).capitalize, :class => "form-check-label" %>
+      </div>
     <% end %>
   </div>
 
