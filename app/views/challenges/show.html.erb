@@ -35,7 +35,11 @@
       <%= distance_of_time_in_words_to_now @challenge.next_date.to_time.utc %>
     <% end %>
 
+    <% if !can_post?(@challenge, current_user) && enrolled?(@challenge, current_user) %>
+      <p class="mt-2">Vous avez déjà participé à l’échéance en cours</p>
+    <% end %>
     </div>
+
     <%= render "streaks_counter.html" %>
     <%= render "enrollment_button.html" %>
       <span class="h5">Challenge lancé par</span>
