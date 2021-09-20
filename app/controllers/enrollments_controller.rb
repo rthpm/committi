@@ -5,7 +5,7 @@ class EnrollmentsController < ApplicationController
     @user = current_user
     @challenge = Challenge.find(params[:challenge_slug])
     if helpers.enrolled?(@challenge, @user)
-      flash[:notice] = "Vous ne pouvez rejoindre un challenge plusieurs fois"
+      flash[:notice] = 'Vous ne pouvez rejoindre un challenge plusieurs fois'
     else
       @enrollment = Enrollment.create!(challenge: @challenge, user: @user)
     end

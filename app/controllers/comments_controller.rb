@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
   end
-  
+
   def create
     @challenge = Challenge.find(params[:challenge_slug])
     @status = Status.find(params[:status_id])

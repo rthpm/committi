@@ -2,9 +2,9 @@
 <div class="d-flex card mb-3 bg-light">
   <%= form_for(@status, :url => { :action => "update" } ) do |form| %>
   <%= form.label :content %>
-  <%= form.text_area :content , :class => 'form-control mb-3 card-header' %>
+  <%= form.text_area :content , :class => "form-control mb-3 card-header" %>
 
-  <%= form.submit :class => 'btn btn-primary mb-2 action_container', :id => 'btn-formulary' %>
+  <%= form.submit :class => "btn btn-primary mb-2 action_container", :id => "btn-formulary" %>
 <% end %>
 
 <%= link_to "Supprimer ce status", challenge_status_path(@status), data: { confirm: "Are you sure?" }, :class => "btn btn-outline-danger", method: :delete %>

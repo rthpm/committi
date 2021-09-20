@@ -1,15 +1,15 @@
 <%= form_with model: @user, url: user_session_path, local: true do |form| %>
-<%=  render 'devise/shared/error_messages', model: form.object %>
+<%=  render "devise/shared/error_messages", model: form.object %>
 <div class="register-photo mt-5 col-sm-12">
   <div class="form-container" id="form-container-registration">
     <div class="image-holder"></div>
       <div class="m-5 mx-auto">
         <h1 class="mt-2 mb-5 text-center h2">Se connecter</h1>
           <%= form.label "Nom d’utilisateur ou email", :class => "mandatory" %>
-          <%= form.text_field :login, :class => 'form-control mb-3' %>
+          <%= form.text_field :login, :class => "form-control mb-3" %>
           <%= form.label :password, :class => "mandatory" %>
-          <%= form.password_field :password, :class => 'form-control mb-3'%>
-          <%= form.submit "Connexion", :class => "btn btn-primary", :id => 'btn-formulary' %>
+          <%= form.password_field :password, :class => "form-control mb-3"%>
+          <%= form.submit "Connexion", :class => "btn btn-primary", :id => "btn-formulary" %>
         <% end %>
         <div class="m-4 mx-auto">
           <%= render "devise/shared/links" %>

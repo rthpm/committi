@@ -52,7 +52,7 @@
         <h2 class="h3">Qu’attendez-vous&nbsp;?</h2>
         <p>Rejoignez-nous&nbsp;, l’inscription ne prend que quelques secondes et vous serez fin prêt pour relever vos plus grands défis.</p>
         <div class="text-center pt-5">
-          <%= link_to "S'inscrire", new_user_registration_path, :class => "btn btn-primary btn-outline btn-lg" %>
+          <%= link_to "S’inscrire", new_user_registration_path, :class => "btn btn-primary btn-outline btn-lg" %>
         </div>
       </div>
     </div>
@@ -63,12 +63,12 @@
 <% unless @challenges.nil? %>
 
   <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-2 flex-wrap d-flex align-items-stretch">
-    <% @challenges.order('updated_at').reverse.take(6).each do |challenge| %>
+    <% @challenges.order("updated_at").reverse.take(6).each do |challenge| %>
       <div class="col">
         <div class="card border border-1">
           <div class="card-header px-4 py-3">
             <%= link_to challenge_path(challenge.slug), :class => "link-dark h4" do %>
-              <%= challenge.title %> 
+              <%= challenge.title %>
             <% end %>
             <p class="text-secondary pt-2">
             par <%= link_to challenge.user.username, profile_path(challenge.user.username) %>

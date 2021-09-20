@@ -1,11 +1,11 @@
 <h1 class="my-5">Changer vos informations de profil</h1>
 <div class="card mb-3 p-5 shadow p-3 mb-5 bg-body rounded">
   <%= form_for(@user, :url => { :action => "update_profile" } ) do |form| %>
-  <%= form.label 'Username' %>
-  <%= form.text_field :username, :class => 'form-control mb-3 card-header' %>
-  <%= form.label 'Bio' %>
-  <%= form.text_area :bio, :class => 'form-control mb-3 card-header' %>
-  <%= form.submit 'Update', :class => 'btn btn-primary mb-2', :id => 'btn-formulary' %>
+  <%= form.label "Username" %>
+  <%= form.text_field :username, :class => "form-control mb-3 card-header" %>
+  <%= form.label "Bio" %>
+  <%= form.text_area :bio, :class => "form-control mb-3 card-header" %>
+  <%= form.submit "Update", :class => "btn btn-primary mb-2", :id => "btn-formulary" %>
 <% end %>
 <p>Changez votre avatar sur <%= link_to "Gravatar", "https://gravatar.com/" %></p>
 <%= link_to "Préférences du compte", edit_user_path %>

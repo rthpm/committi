@@ -1,4 +1,4 @@
-<%=  render 'devise/shared/error_messages',resource: resource %>
+<%=  render "devise/shared/error_messages",resource: resource %>
 <div class="register-photo mt-5">
   <div class="form-container" id="form-container-registration">
     <div class="image-holder"></div>
@@ -6,13 +6,13 @@
         <h1 class="mt-2 my-5 text-center h2">Renvoyer instructions</h1>
         <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |form| %>
           <%= form.label :email, :class => "mandatory" %>
-          <%= form.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), :class => 'form-control mb-3' %>
-          <%= form.submit "Resend confirmation instructions", :class => 'btn btn-primary', :id => 'btn-formulary' %>
+          <%= form.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), :class => "form-control mb-3" %>
+          <%= form.submit "Resend confirmation instructions", :class => "btn btn-primary", :id => "btn-formulary" %>
         <% end %>
         <div class="m-4 mx-auto">
           <%= render "devise/shared/links" %>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 </div>

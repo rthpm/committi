@@ -19,13 +19,13 @@ class Challenge < ApplicationRecord
   validates :description,
             :length => { :maximum => 100_000 }
 
-  VALID_INTERVAL = ["daily", "weekly", "monthly"].freeze
-  TIME_REQUIRED = ["weekly", "monthly"].freeze
-  TIMELY_FREE = ["daily"].freeze
+  VALID_INTERVAL = ['daily', 'weekly', 'monthly'].freeze
+  TIME_REQUIRED = ['weekly', 'monthly'].freeze
+  TIMELY_FREE = ['daily'].freeze
 
   validates_each :interval do |record, attr, value|
     unless VALID_INTERVAL.include?(value.to_s.downcase)
-      record.errors.add(attr, "is not permitted")
+      record.errors.add(attr, 'is not permitted')
     end
   end
 

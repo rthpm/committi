@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def profile; end
 
-  def update_profile 
+  def update_profile
     if @user.update(profile_params)
       redirect_to profile_path(@user.username)
     else

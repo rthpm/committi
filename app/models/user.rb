@@ -34,14 +34,14 @@ class User < ApplicationRecord
             :length => { :maximum => 300 }
 
   # For security & trust reasons
-  BANNED_USERNAMES = ["admin", "administrator", "contact", "fraud", "guest",
-     "help", "hostmaster", "committi", "mailer-daemon", "moderator",
-     "moderators", "nobody", "postmaster", "root", "security", "support",
-     "sysop", "webmaster", "enable", "new", "signup", "premium",].freeze
+  BANNED_USERNAMES = ['admin', 'administrator', 'contact', 'fraud', 'guest',
+     'help', 'hostmaster', 'committi', 'mailer-daemon', 'moderator',
+     'moderators', 'nobody', 'postmaster', 'root', 'security', 'support',
+     'sysop', 'webmaster', 'enable', 'new', 'signup', 'premium',].freeze
 
   validates_each :username do |record, attr, value|
     if BANNED_USERNAMES.include?(value.to_s.downcase)
-      record.errors.add(attr, "is not permitted")
+      record.errors.add(attr, 'is not permitted')
     end
   end
 
@@ -54,7 +54,7 @@ class User < ApplicationRecord
     conditions = warden_condition.dup
     login = conditions.delete(:login)
     where(conditions).where(
-      ["lower(username) = :value OR lower(email) = :value",
+      ['lower(username) = :value OR lower(email) = :value',
       { value: login.strip.downcase },]).first
   end
 
@@ -73,7 +73,7 @@ class User < ApplicationRecord
   end
 
   def best_streak_overall(user)
-    Enrollment.where(user: user).order("best_streak DESC").first.best_streak
+    Enrollment.where(user: user).order('best_streak DESC').first.best_streak
   end
 
   def matching?(current_user, user)

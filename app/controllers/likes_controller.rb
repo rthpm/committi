@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     @user = current_user
     @status = params[:status_id]
     if helpers.liked?(@status, @user)
-      flash[:notice] = "Vous ne pouvez liker un status plusieurs fois"
+      flash[:notice] = 'Vous ne pouvez liker un status plusieurs fois'
     else
       @like = Like.create!(status_id: @status, user: @user)
     end

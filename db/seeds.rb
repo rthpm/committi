@@ -12,13 +12,13 @@ User.create!(email: 'test@localhost.xyz',
 end
 
 # In production, you can run lib/tasks/create_categories.rb
-Category.create(name: "Arts visuels", slug: "visual-arts")
-Category.create(name: "Musique & audio", slug: "music-and-audio")
-Category.create(name: "Vidéo", slug: "video")
-Category.create(name: "Écriture", slug: "writing")
-Category.create(name: "Santé", slug: "health")
-Category.create(name: "Sport", slug: "sport")
-Category.create(name: "Autre", slug: "misc")
+Category.create(name: 'Arts visuels', slug: 'visual-arts')
+Category.create(name: 'Musique & audio', slug: 'music-and-audio')
+Category.create(name: 'Vidéo', slug: 'video')
+Category.create(name: 'Écriture', slug: 'writing')
+Category.create(name: 'Santé', slug: 'health')
+Category.create(name: 'Sport', slug: 'sport')
+Category.create(name: 'Autre', slug: 'misc')
 
 10.times do
   Challenge.create!(title: Faker::Book.unique.title,

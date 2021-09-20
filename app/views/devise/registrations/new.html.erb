@@ -1,19 +1,19 @@
 <%= form_with model: @user, url: user_registration_path, local: true do |form| %>
-  <%=  render 'devise/shared/error_messages', model: form.object %>
+  <%=  render "devise/shared/error_messages", model: form.object %>
   <div class="register-photo mt-5">
     <div class="form-container" id="form-container-registration">
       <div class="image-holder"></div>
         <div class="m-5 mx-auto">
           <h2 class="mt-2 mb-5 text-center" style="color: #dd750a"><strong>Créer un compte</strong></h2>
           <%= form.label "Nom d’utilisateur", :class => "mandatory" %>
-          <%= form.text_field :username, :placeholder => "3 lettres min. en minuscule", :class => 'form-control mb-3' %>
+          <%= form.text_field :username, :placeholder => "3 lettres min. en minuscule", :class => "form-control mb-3" %>
           <%= form.label :email, :class => "mandatory" %>
-          <%= form.text_field :email, :class => 'form-control mb-3' %>
+          <%= form.text_field :email, :class => "form-control mb-3" %>
           <%= form.label :password, :class => "mandatory" %>
-          <%= form.password_field :password, :class => 'form-control mb-3'%>
+          <%= form.password_field :password, :class => "form-control mb-3"%>
           <%= form.label :password_confirmation, :class => "mandatory" %>
-          <%= form.password_field :password, :class => 'form-control mb-3' %>
-          <%= form.submit "S'inscrire", :class => "btn btn-primary", :id => "btn-formulary" %>
+          <%= form.password_field :password, :class => "form-control mb-3" %>
+          <%= form.submit "S’inscrire", :class => "btn btn-primary", :id => "btn-formulary" %>
           <div class="m-4 mx-auto">
             <%= render "devise/shared/links" %>
           </div>

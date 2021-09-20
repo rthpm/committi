@@ -6,7 +6,7 @@
             <h1 class="mt-2 mb-5 text-center h2">Mot de passe oublié</h1>
               <%= form_with model: resource, scope: resource_name, url: password_path(resource_name), local: true do |form| %>
                 <%= form.label :email, :class => "mandatory" %>
-                <%= form.email_field :email, :autofocus => 'true', :autocomplete => 'email', :class => 'form-control mb-3'  %>
+                <%= form.email_field :email, :autofocus => "true", :autocomplete => "email", :class => "form-control mb-3"  %>
                 <%= form.submit "Réinitialiser mot de passe", :class => "btn btn-primary", :id => "btn-formulary" %>
               <% end %>
           </div>

@@ -14,7 +14,7 @@ class ChallengesController < ApplicationController
     if signed_in?
       @enrollment = current_user.enrollments.find_by(challenge: @challenge)
     end
-    if @challenge.interval == "daily"
+    if @challenge.interval == 'daily'
       @countdown = countdown_string
     else
       @countdown = countdown_string(@challenge.next_date)
