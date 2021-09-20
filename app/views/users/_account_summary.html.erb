@@ -12,20 +12,35 @@
   <div class="col stats">
     <div class="card border border-1 text-center">
       <div class="card-body">
-      <span class="h4"><%= @user.statuses_count %></span><br />
-      Status
+        <span class="h4"><%= @user.statuses_count %></span><br />
+        Status
       </div>
     </div>
   </div>
   <div class="col stats">
     <div class="card border border-1 text-center">
       <div class="card-body">
-      <span class="h4"><%= @user.comments_count %></span><br />
-      Commentaires
+        <span class="h4"><%= @user.comments_count %></span><br />
+        Commentaires
+      </div>
+    </div>
+  </div>
+  <div class="col stats">
+    <div class="card border border-1 text-center">
+      <div class="card-body">
+        <span class="h4">
+          <% if @user.enrollments.any? %>
+            <%= @user.best_streak_overall(@user) %>
+          <% else %>
+            0
+          <% end %>
+        </span><br />
+        Meilleure série
+      </div>
     </div>
   </div>
 </div>
-
+ 
 <h2 class="mt-4">Challenges que vous administrez</h2>
 <% if @user.challenges.count == 0 %>
   <p>Vous n’administrez challenge. <%= link_to "Créez-en un !", new_challenge_path %></p>

@@ -72,6 +72,10 @@ class User < ApplicationRecord
     Like.where(status: Status.where(user: user)).count
   end
 
+  def best_streak_overall(user)
+    Enrollment.where(user: user).order("best_streak DESC").first.best_streak
+  end
+
   def matching?(current_user, user)
     current_user == user
   end
